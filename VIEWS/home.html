@@ -1,0 +1,160 @@
+<div class="container-fluid">
+<!-- 	<div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		<span id="errmsg"></span>
+	</div> -->
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 KPIbox">
+			<div class="L1KPIbox">
+				<table class="L1Metric">
+					<tr style="font-size: 12px; color: #a6a6a6">
+						<td></td>
+						<td></td>
+						<td></td>
+						<td id="" ng-click="HomePopUp()">Actual</td>	
+						<td id="qsKPIhome001_0Title" ng-click="HomePopUp()" class="hidden-md"></td>
+						<td id="" ng-click="HomePopUp()" style="padding-right: 10%;">Delta</td>	
+					</tr>					
+					<tr>
+						<td><img src="IMG/011-helmet.png" style="height: 50; width: 50px; opacity: 0.7; margin-top: -14px;"></td>
+						<td class=""><div class="L3Beacon qsKPIhome000Class_1" style="    margin-top: -14px; height: 50px;">&ensp;</div></td>
+						<td id="qsKPIhome000_SubTitle" ng-click="HomePopUp()" style="text-align: left; margin-left: 20px;"></td>	
+						<td id="qsKPIhome000_0" ng-click="HomePopUp()"></td>	
+						<td id="qsKPIhome001_0" ng-click="HomePopUp()" class="hidden-md"></td>
+						<td id="qsKPIhome001_1" ng-click="HomePopUp()" style="padding-right: 10%;"></td>	
+					</tr>
+					<div id="qsKPIhome000" style="height: 0px;"></div>
+					<div id="qsKPIhome001" style="height: 0px;"></div>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div ng-repeat="list in Summary" emit-last-repeater-element>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 KPIbox">
+				<div class="L2KPIbox">
+					<div class="box {{list.boxClass}}">
+						<div class="L2Title">
+							<div id="{{list.Title}}" class=""></div>
+							<div class="L2IMG"><img src="{{list.IMG}}" style="height: 50px; width: 50px;"></div>
+						</div>
+						<div id="{{list.MetricTitle}}" class="L2SubTitle"></div>						
+					</div>
+										
+					<table class="L2Metric">
+						<tr style="font-size: 12px; color: #a6a6a6">
+							<td class=""></td>
+							<td id="{{list.MetricLabel}}" style="padding-top: 10px;"></td>	
+							<td id="{{list.MetricCompareLabel}}" class="hidden-md" style="padding-top: 10px;"></td>
+							<td style="padding-top: 10px;">Delta</td>	
+						</tr>						
+						<tr>
+							<td class=""><div class="L3Beacon {{list.MetricClass}}">&ensp;</div></td>
+							<td id="{{list.Metric}}" ng-click="HomePopUp(list.MetricClick)"></td>	
+							<td id="{{list.MetricCompare}}" ng-click="HomePopUp(list.MetricClick)" class="hidden-md"></td>
+							<td id="{{list.MetricDelta}}" ng-click="HomePopUp(list.MetricClick)" style="padding-right: 15px;"></td>	
+						</tr>
+						<div id="{{list.Obj}}" style="height: 0px;"></div>
+						<div id="{{list.ObjCompare}}" style="height: 0px;"></div>
+					</table>
+					<div id="{{list.Trend}}" class="L2Chart"></div>
+				</div>
+				<div class="L3KPIbox">
+					<table>	
+						<tr style="font-size: 12px; color: #a6a6a6">
+							<td class=""></td>
+							<td class="L3Title" style="width: 35%;"></td>
+							<td class="L3Metric">Actual</td>
+							<td class="L3Metric hidden-md hidden-lg" id="{{list.SubMetric[0].SubMetricCompareLabel}}"></td>
+							<td class="L3Metric">Delta</td>
+						</tr>											
+						<tr ng-repeat="lista in list.SubMetric">
+							<td class=""><div class="L3Beacon {{lista.SubMetricClass}}">&ensp;</div></td>
+							<td id="{{lista.SubMetricTitle}}" class="L3Title"></td>
+							<td id="{{lista.SubMetric}}" class="L3Metric" ng-click="HomePopUp(lista.SubMetricClick)"></td>
+							<td id="{{lista.SubMetricCompare}}" class="L3Metric hidden-md hidden-lg" ng-click="HomePopUp(lista.SubMetricClick)"></td>
+							<td id="{{lista.SubMetricDelta}}" class="L3Metric" ng-click="HomePopUp(lista.SubMetricClick)"></td>
+						</tr>														
+						<div ng-repeat="lista in list.SubMetric">
+							<div id="{{lista.SubMetricObj}}" style="height: 0px;"></div>
+							<div id="{{lista.SubMetricObjCompare}}" style="height: 0px;"></div>
+							<div id="{{lista.SubMetricClassObj}}" style="height: 0px;"></div>
+						</div>
+					</table>
+				</div>	
+				<div class="L3KPItrailer {{list.boxClass}}"></div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Modal -->
+	<div class="modal fade bs-example-modal-lg" id="myModalHome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"></h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<div class="btn-group" role="group" aria-label="..." style="">
+	                        <button type="button" class="btn btn-default active" ng-click="ModalChartSelector(1)" id="ModalChartSelectorFirst">Weekly Trend</button>
+	                        <button type="button" class="btn btn-default" ng-click="ModalChartSelector(2)">Monthly Trend</button>
+	                        <button type="button" class="btn btn-default" ng-click="ModalChartSelector(3)">DCs Comparison</button>
+	                        <button type="button" class="btn btn-default" ng-click="ModalChartSelector(4)">Drivers Trend</button>
+                    	</div> 
+                    	<div class="customDropdown">
+                    		<drop-down dropdownlist="'DRIVERS_MeasureName'" dropdownid="'DW00'" dropdownlabel="driverDropdown" dropdownclass="'btn btn-default'" dropdownfieldselect="'DRIVERS_MeasureName'"></drop-down>
+                    	</div>	                 	
+					</div>
+					<div class="row" id="popUpOneChart">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div id="qsObjectHomePopUp" style="height: 500px; padding-left: 100px; padding-right: 100px;"></div>
+						</div>
+					</div>
+
+					<div id="popUpThreeChart">
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
+								<div ng-repeat="legend1 in qsObjectHomePopUpPercLegend">
+									<span style="color: {{legend1.coloring.baseColor.color}}">{{legend1.series.markerNew}}</span>&nbsp;{{legend1.qFallbackTitle}}&nbsp;&nbsp;
+								</div>
+							</div>	
+							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+								<div id="qsObjectHomePopUpPerc" style="height: 250px; padding-right: 150px;"></div>
+							</div>								
+						</div>
+
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
+								<div ng-repeat="legend2 in qsObjectHomePopUpNumLegend">
+									<span style="color: {{legend2.coloring.baseColor.color}}">{{legend2.series.markerNew}}</span>&nbsp;{{legend2.qFallbackTitle}}&nbsp;&nbsp;
+								</div>
+							</div>	
+							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+								<div id="qsObjectHomePopUpNum" style="height: 250px; padding-right: 150px;"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
+								<div ng-repeat="legend3 in qsObjectHomePopUpBigNumLegend">
+									<span style="color: {{legend3.coloring.baseColor.color}}">{{legend3.series.markerNew}}</span>&nbsp;{{legend3.qFallbackTitle}}&nbsp;&nbsp;
+								</div>
+							</div>	
+							<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+								<div id="qsObjectHomePopUpBigNum" style="height: 250px; padding-right: 150px;"></div>
+							</div>	
+						</div>																						
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

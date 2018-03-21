@@ -1,0 +1,241 @@
+/*@font-face {
+    font-family: 'QlikView Sans';
+    src: url(/extensions/DevControlTower/fonts/qlikview-sans.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(/extensions/DevControlTower/fonts/qlikview-sans-bold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(/extensions/DevControlTower/fonts/qlikview-sans-italic.ttf) format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(/extensions/DevControlTower/fonts/qlikview-sans-bold-italic.ttf) format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'QlikView Icons';
+    src: url(/extensions/DevControlTower/fonts/fonts/qlikview-icons.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}*/
+/*html, body {  
+height: 100%;  
+overflow: hidden;  
+} */
+
+body {
+    padding-bottom: 30px;
+    /*font-family: "QlikView Sans", sans-serif;*/
+    
+    font-family: "WHITNEY", sans-serif;
+    background-color: #f6f4f3; 
+    color: #58585a;   
+    letter-spacing: 1px;
+    /*overflow: auto; */
+}   
+
+div.qvobject, div.qvplaceholder {
+}
+
+/*Overwrite Qlik CSS*/
+.qv-global-selections{
+    z-index: 1050;
+}
+
+.qv-object{
+    background-color: transparent;
+}
+
+.qvt-chart-tooltip{
+    z-index: 2000;
+}
+/*End Overwrite Qlik CSS*/
+
+/*Overwrite Bootstrap CSS*/
+.navbar-default {
+    background-color: #f6f4f3;
+    border-color: #f6f4f3;
+    /*color: #58585a; */
+}
+
+.navbar-default .navbar-brand {
+    /*color: #FFFFFF;*/
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    /*color: #FFFFFF;*/
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a {
+    /*color: #FFFFFF;*/
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    border-bottom-color: #25861E;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    background-color: transparent;
+}
+/*End Overwrite Bootstrap CSS*/
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #545352;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width: calc(100% - 250px);
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*margin-top: 90px;*/
+}
+#content.active {
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES 
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #sidebarCollapse span {
+        /*display: none;*/
+    }
+}
+
+.filterTitle{
+    padding-top: 120px;
+    padding-left: 20px;
+}
+
+.filterSubTitle{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.filterObject{
+    height: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+/*Overwritnig Bootstrap CSS*/
+.lui-popover-container{
+    z-index: 10000;
+}
+
+.carousel-control {
+    width: 5%;
+};
+
+
+/*Custom code from dropdown*/
+
+/*.dropbtn {
+    background-color: #FFFFFF;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}*/
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.customDropdown {
+    position: relative;
+    display: inline-block;
+    /*margin-left: 100px;*/
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    min-width: 300px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    color: #58585a;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.customDropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+/*Custom code from dropdown*/
+
+.Title{
+    background-color: #57575a;
+    color: #fff;
+    left: 0px;
+    margin-right: -20px;
+    margin-left: -20px;
+    margin-top: -20px;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: bold;    
+    padding-top: 5px;
+}
