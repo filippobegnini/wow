@@ -1,6 +1,6 @@
 //********** home Controllers
-app.controller('homeController', function ($scope, $rootScope, chartService, setUpService) {
-	console.log('home');
+app.controller('homeController', function ($scope, $log, $rootScope, chartService, setUpService) {
+	$log.info('home');
 
 	$(document).ready(function () {
 		//highlight this as the selected page
@@ -15,7 +15,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	$scope.$on('LastRepeaterElement', function () {
-		console.log('IM HERE')
+		$log.info('IM HERE')
 		chartService.modelKPI($rootScope.arrayKPIs);
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
 		chartService.getObject($rootScope.arrayObjects);
@@ -260,7 +260,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	};
 
 	this.coloursKPI = function (objectsArray) {
-		console.log('coloursKPI');
+		$log.info('coloursKPI');
 		angular.forEach(objectsArray, function (value) {
 			strObj = value.qsObjectID;
 			 app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
@@ -275,7 +275,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	};
 
 	 app.qlikDoc.getObject('sGepUe').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempA = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {
@@ -307,7 +307,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	 app.qlikDoc.getObject('kDcPaSy').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempB = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {
@@ -339,7 +339,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	 app.qlikDoc.getObject('degaqC').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {
@@ -371,7 +371,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	 app.qlikDoc.getObject('UPEdhp').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {
@@ -403,7 +403,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	 app.qlikDoc.getObject('YLdaGXX').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempD = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {
@@ -435,7 +435,7 @@ app.controller('homeController', function ($scope, $rootScope, chartService, set
 	});
 
 	 app.qlikDoc.getObject('LFwBur').then(function (model) {
-		console.log('legend');
+		$log.info('legend');
 		$rootScope.tempE = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
 		model.Validated.bind(function () {

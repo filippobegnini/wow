@@ -1,6 +1,6 @@
 //********** home Controllers
-app.controller('detailsController', function ($scope, $rootScope, chartService, setUpService) {
-	console.log('detailsController');
+app.controller('detailsController', function ($scope, $log, $rootScope, chartService, setUpService) {
+	$log.info('detailsController');
 
 	$(document).ready(function () {
 		//highlight this as the selected page

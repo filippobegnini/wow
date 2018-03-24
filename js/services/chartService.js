@@ -1,6 +1,6 @@
 //********** emitLastRepeaterElement
-app.service('chartService', function () {
-    console.log('chartService');
+app.service('chartService', function ($log) {
+    $log.info('chartService');
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,7 +9,7 @@ app.service('chartService', function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 	
 
     this.customeChartAndTable = function (objectsArray, view) {
-        console.log('customeChartAndTable');
+        $log.info('customeChartAndTable');
         angular.forEach(objectsArray, function (value) {
             if (value.qsObjectView == view) {
                  app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
@@ -23,9 +23,9 @@ app.service('chartService', function () {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 
     this.getObject = function (objectsArray) {
-        console.log('getObject');
-        console.log(objectArray)
-        console.log(app.qlikDoc)
+        $log.info('getObject');
+        $log.info(objectArray)
+        $log.info(app.qlikDoc)
 
         angular.forEach(objectsArray, function (value) {
              app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
@@ -40,7 +40,7 @@ app.service('chartService', function () {
     //with the suffix "Title"
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.modelKPI = function (objectsArray) {
-        console.log('modelKPI');
+        $log.info('modelKPI');
         angular.forEach(objectsArray, function (value) {
             strObj = value.qsObjectID;
              app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
@@ -76,8 +76,8 @@ app.service('chartService', function () {
 
                     str = '.' + value.qsObjectID + '_1Value';
                     $(str).css({ "border-left-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText });
-                    // console.log(str);
-                    // console.log($rootScope[str]);
+                    // $log.info(str);
+                    // $log.info($rootScope[str]);
 
                     // //Secondary Measure Colour
                     // if(model.layout.qHyperCube.qMeasureInfo["1"].conditionalColoring.paletteSingleColor.color) {
@@ -155,7 +155,7 @@ app.service('chartService', function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.export = function (objectID) {
          app.qlikDoc.getObject(objectID).then(function (model) {
-            console.log(objectID);
+            $log.info(objectID);
             var table =  app.qlikDoc.table(model);
             table.exportData({ download: true });
         });
@@ -174,9 +174,9 @@ app.service('chartService', function () {
     //This service setlect a value in a field
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.selectValues = function (fieldName, fieldValues) {
-        console.log('selectValues');
-        console.log(fieldValues);
-        console.log(fieldName);
+        $log.info('selectValues');
+        $log.info(fieldValues);
+        $log.info(fieldName);
         if (Number(fieldValues)) {
              app.qlikDoc.field(fieldName).selectValues([Number(fieldValues)], true, true);
         } else {

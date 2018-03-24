@@ -1,6 +1,6 @@
 //********** emitLastRepeaterElement
-app.directive('dropdownDirective', [function($rootScope) {
-	console.log('dropDown');
+app.directive('dropdownDirective', [function($rootScope, $log) {
+	$log.info('dropDown');
     return {
         restrict : 'E',
         scope: {

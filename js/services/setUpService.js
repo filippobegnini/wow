@@ -1,6 +1,6 @@
 //********** home Controllers
-app.service('setUpService', function($rootScope, chartService) {
-	console.log('setUpService');
+app.service('setUpService', function($rootScope, $log, chartService) {
+	$log.info('setUpService');
 
 	app.qlikDoc = app.qlik.openApp("Woolworths - v0.8.qvf", config);
 
@@ -174,7 +174,7 @@ $rootScope.dropDownDetailsArray = [
 	{id:'DW08'},
 ];
 $rootScope.dropDownFunction =  function(action, id) {	
-	console.log('dropDownFunction');
+	$log.info('dropDownFunction');
 	str = '#' + id;
 	if(action == 'toggle') {
 		$(str).toggleClass('show');
