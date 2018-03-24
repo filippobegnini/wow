@@ -1,6 +1,6 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.controller( 'pageOneCtrl', function($scope, $rootScope, servicesLibrary, setUp) {		
-	console.log('pageOne');
+app.obj.mashupTemplateApp.controller( 'detailsController', function($scope, $rootScope,servicesLibrary, setUpService) {		
+	console.log('detailsController');
 
 	$(document).ready(function(){
 		//highlight this as the selected page
@@ -15,7 +15,7 @@ app.obj.mashupTemplateApp.controller( 'pageOneCtrl', function($scope, $rootScope
 	});
 
 	$scope.$on('LastRepeaterElement', function(){
-		servicesLibrary.getObject($rootScope.arrayObjectsPageOne);	
+		servicesLibrary.getObject($rootScope.arrayObjectsDetailsController);	
 		servicesLibrary.modelKPI($rootScope.arrayKPIsCommon);
 	});	
 

@@ -1,0 +1,16 @@
+{
+    "development": {
+        "qlikconfig": {
+            "host": "localhost",
+            "prefix": "/",
+            "port": 4848
+        }
+    },
+    "production": {
+        "qlikconfig": {
+            "host": "ausyd-feg1.qliktech.com",
+            "prefix": "/",
+            "port": 443
+        }
+    }
+}

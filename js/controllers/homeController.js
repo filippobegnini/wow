@@ -1,5 +1,5 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.controller( 'homeCtrl', function($scope, $rootScope, servicesLibrary, setUp) {		
+app.obj.mashupTemplateApp.controller( 'homeController', function($scope, $rootScope, servicesLibrary, setUpService) {		
 	console.log('home');
 
 	$(document).ready(function(){
@@ -15,6 +15,7 @@ app.obj.mashupTemplateApp.controller( 'homeCtrl', function($scope, $rootScope, s
 	});	
 
 	$scope.$on('LastRepeaterElement', function(){
+		console.log('IM HERE')
 		servicesLibrary.modelKPI($rootScope.arrayKPIs);
 		servicesLibrary.modelKPI($rootScope.arrayKPIsCommon);
 		servicesLibrary.getObject($rootScope.arrayObjects);	

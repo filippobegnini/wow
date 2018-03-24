@@ -1,15 +1,15 @@
-var scriptsUrl = 'https://ausyd-feg1.qliktech.com/extensions/wow/';
+var scriptsUrl = 'http://localhost:4848/extensions/wow/';
 
 require.config({
-  baseUrl: "https://ausyd-feg1.qliktech.com/resources",
+  baseUrl: "http://localhost:4848/resources",
   paths: {
   	'app': scriptsUrl + 'js/qlikAPI/app',
-	'home': scriptsUrl + 'js/controllers/home',  	
-	'pageOne': scriptsUrl + 'js/controllers/pageOne',
+	'homeController': scriptsUrl + 'js/controllers/homeController',  	
+	'detailsController': scriptsUrl + 'js/controllers/detailsController',
 	'services': scriptsUrl + 'js/services/services',
-	'setUp': scriptsUrl + 'js/services/setUp',
-	'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',  	
-	'dropDown': scriptsUrl + 'js/directives/dropDown', 
+	'setUpService': scriptsUrl + 'js/services/setUpService',
+	'emitLastRepeaterElementDirective': scriptsUrl + 'js/directives/emitLastRepeaterElementDirective',  	
+	'dropdownDirective': scriptsUrl + 'js/directives/dropdownDirective', 
   }
 });
 
@@ -30,35 +30,34 @@ define([
 
 		app.obj.mashupTemplateApp.config( function ( $routeProvider ) {
 			$routeProvider	
-			.when( '/pageOne', {
-				templateUrl: 'VIEWS/pageOne.html',
-				controller: 'pageOneCtrl'
+			.when( '/details', {
+				templateUrl: 'views/details.html',
+				controller: 'detailsController'
 			} )				
 			.when( '/#', {
-				templateUrl: 'VIEWS/home.html',
-				controller: 'homeCtrl'
+				templateUrl: 'views/home.html',
+				controller: 'homeController'
 			} )		
 			.when( '/home', {
-				templateUrl: 'VIEWS/home.html',
-				controller: 'homeCtrl'
+				templateUrl: 'views/home.html',
+				controller: 'homeController'
 			} )						
 			.otherwise( {
-				templateUrl: 'VIEWS/home.html',
-				controller: 'homeCtrl'
+				templateUrl: 'views/home.html',
+				controller: 'homeController'
 			} );
 		} );
 
-		app.obj.mashupTemplateApp.run( function($rootScope) {
-		});
+
 
 		require([
 					'js/qlik',
 					'services',	
-					'setUp',
-					'home',				
-					'pageOne',
-					'emitLastRepeaterElement',
-					'dropDown',
+					'setUpService',
+					'homeController',				
+					'detailsController',
+					'emitLastRepeaterElementDirective',
+					'dropdownDirective',
 				], function ( qlik ){
 
 			app.obj.qlik = qlik;

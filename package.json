@@ -1,0 +1,18 @@
+{
+  "name": "woolworths",
+  "version": "1.0.0",
+  "description": "Woolworths angular app",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filippobegnini/wow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "1.11.0"
+  }
+}

@@ -67,6 +67,9 @@ app.obj.mashupTemplateApp.service('servicesLibrary', function($rootScope) {
 
 	this.getObject = function (objectsArray) {
 		console.log('getObject');
+		console.log(objectArray)
+		console.log(app.Object.app)
+
 			angular.forEach(objectsArray, function(value){
 				app.obj.app.getObject(value.qsObjectID,value.qsObject);
 			});

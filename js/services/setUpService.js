@@ -1,6 +1,6 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.service('setUp', function($rootScope, servicesLibrary) {
-	console.log('setUp');
+app.obj.mashupTemplateApp.service('setUpService', function($rootScope, servicesLibrary) {
+	console.log('setUpService');
 	app.boot();
 
 	//Current Selection
@@ -35,7 +35,7 @@ app.obj.mashupTemplateApp.service('setUp', function($rootScope, servicesLibrary)
 			{qsObject:'degaqC'},
 		];
 
-		$rootScope.arrayObjectsPageOne = [
+		$rootScope.arrayObjectsDetails = [
 			{qsObjectID:'qsObjectDetailsChartPerc',			qsObject:'UPEdhp'},
 			{qsObjectID:'qsObjectDetailsChartNum',			qsObject:'YLdaGXX'},
 			{qsObjectID:'qsObjectDetailsChartBigNum',		qsObject:'LFwBur'},
@@ -157,7 +157,7 @@ app.obj.mashupTemplateApp.service('setUp', function($rootScope, servicesLibrary)
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 $rootScope.driverDropdown = 'Select Measure'
-$rootScope.dropDownPageOneArray = [
+$rootScope.dropDownDetailsArray = [
 	{id:'DW01'},
 	{id:'DW02'},
 	{id:'DW03'},
@@ -178,7 +178,7 @@ $rootScope.dropDownFunction =  function(action, id) {
 			$rootScope.driverDropdown = 'Close Menu';
 		};
 	};
-	angular.forEach($rootScope.dropDownPageOneArray, function(value){
+	angular.forEach($rootScope.dropDownDetailsArray, function(value){
 		if(value.id != id) {
 			str = '#' + value.id;
 			$(str).removeClass('show');

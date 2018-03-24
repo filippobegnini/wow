@@ -1,5 +1,5 @@
 //********** emitLastRepeaterElement
-app.obj.mashupTemplateApp.directive('dropDown', [function($rootScope) {
+app.obj.mashupTemplateApp.directive('dropdownDirective', [function($rootScope) {
 	console.log('dropDown');
     return {
         restrict : 'E',
