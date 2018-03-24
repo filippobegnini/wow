@@ -2,7 +2,6 @@
 app.service('setUpService', function($rootScope, $log, chartService) {
 	$log.info('setUpService');
 
-	app.qlikDoc = app.qlik.openApp("Woolworths - v0.8.qvf", config);
 
 
 	//Current Selection

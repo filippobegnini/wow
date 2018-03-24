@@ -1,6 +1,6 @@
 //********** emitLastRepeaterElement
-app.directive('emitLastRepeaterElementDirective', function($log) {
-	$log.info('emitLastRepeaterElementDirective');
+app.directive('emitLastRepeaterElement', function() {
+	console.log('emitLastRepeaterElement');
 	return function(scope) {
 		if (scope.$last){
 		scope.$emit('LastRepeaterElement');
@@ -8,4 +8,3 @@ app.directive('emitLastRepeaterElementDirective', function($log) {
 	};
 });
 //********** End emitLastRepeaterElement
-

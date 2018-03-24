@@ -16,7 +16,10 @@ app.controller('detailsController', function ($scope, $log, $rootScope, chartSer
 		$("#toggleButtons").hide();
 	});
 
-
+	$scope.$on('LastRepeaterElement', function(){
+		chartService.getObject($rootScope.arrayObjectsPageOne);	
+		chartService.modelKPI($rootScope.arrayKPIsCommon);
+	});	
 
 	$rootScope.Leve3Cathegory = [
 		{

@@ -12,7 +12,7 @@ app.service('chartService', function ($log) {
         $log.info('customeChartAndTable');
         angular.forEach(objectsArray, function (value) {
             if (value.qsObjectView == view) {
-                 app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
+                app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
             }
         });
     };
@@ -24,11 +24,10 @@ app.service('chartService', function ($log) {
 
     this.getObject = function (objectsArray) {
         $log.info('getObject');
-        $log.info(objectArray)
-        $log.info(app.qlikDoc)
+        $log.info(objectsArray)
 
         angular.forEach(objectsArray, function (value) {
-             app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
+            app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
         });
     };
 
@@ -43,7 +42,7 @@ app.service('chartService', function ($log) {
         $log.info('modelKPI');
         angular.forEach(objectsArray, function (value) {
             strObj = value.qsObjectID;
-             app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
+            app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
                 //Primary Measure
                 str = '#' + value.qsObjectID + '_0';
                 $(str).text(model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText);
@@ -142,7 +141,7 @@ app.service('chartService', function ($log) {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.modelText = function (objectsArray) {
         angular.forEach(objectsArray, function (value) {
-             app.qlikDoc.getObject(value.qsObject).then(function (model) {
+            app.qlikDoc.getObject(value.qsObject).then(function (model) {
                 str = '#' + value.qsObjectID;
                 $(str).text(model.layout.qHyperCube.qGrandTotalRow[0].qText);
             });
@@ -154,9 +153,9 @@ app.service('chartService', function ($log) {
     //This service export an object
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.export = function (objectID) {
-         app.qlikDoc.getObject(objectID).then(function (model) {
+        app.qlikDoc.getObject(objectID).then(function (model) {
             $log.info(objectID);
-            var table =  app.qlikDoc.table(model);
+            var table = app.qlikDoc.table(model);
             table.exportData({ download: true });
         });
     };
@@ -166,7 +165,7 @@ app.service('chartService', function ($log) {
     //This service resize all the objects
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.resize = function () {
-         app.qlik.resize();
+        app.qlik.resize();
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -178,9 +177,9 @@ app.service('chartService', function ($log) {
         $log.info(fieldValues);
         $log.info(fieldName);
         if (Number(fieldValues)) {
-             app.qlikDoc.field(fieldName).selectValues([Number(fieldValues)], true, true);
+            app.qlikDoc.field(fieldName).selectValues([Number(fieldValues)], true, true);
         } else {
-             app.qlikDoc.field(fieldName).selectValues([fieldValues], true, true);
+            app.qlikDoc.field(fieldName).selectValues([fieldValues], true, true);
         };
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -189,7 +188,7 @@ app.service('chartService', function ($log) {
     //This service clear a field
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.clear = function (fieldName) {
-         app.qlikDoc.field(fieldName).clear();
+        app.qlikDoc.field(fieldName).clear();
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -197,10 +196,24 @@ app.service('chartService', function ($log) {
     //This service set a variable 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     this.setStringValue = function (varName, varValue) {
-         app.qlikDoc.variable.setStringValue(varName, varValue);
+        app.qlikDoc.variable.setStringValue(varName, varValue);
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    this.coloursKPI = function (objectsArray) {
+        console.log('coloursKPI');
+        angular.forEach(objectsArray, function (value) {
+            strObj = value.qsObjectID;
+            app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
+                str = '.' + value.qsObjectID + '_1';
+                $(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+                model.Validated.bind(function () {
+                    str = '.' + value.qsObjectID + '_1';
+                    $(str).css({ "background-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+                });
+            });
+        });
+    };
 
 
 });

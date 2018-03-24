@@ -15,9 +15,9 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	});
 
 	$scope.$on('LastRepeaterElement', function () {
-		$log.info('IM HERE')
 		chartService.modelKPI($rootScope.arrayKPIs);
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
+		$log.info($rootScope.arrayObjects)
 		chartService.getObject($rootScope.arrayObjects);
 		chartService.coloursKPI($rootScope.arrayColoursKPI);
 	});
