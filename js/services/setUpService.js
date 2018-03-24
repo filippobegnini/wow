@@ -1,5 +1,5 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.service('setUpService', function($rootScope, servicesLibrary) {
+app.obj.mashupTemplateApp.service('setUpService', function($rootScope, chartService) {
 	console.log('setUpService');
 	app.boot();
 
@@ -188,17 +188,17 @@ $rootScope.dropDownFunction =  function(action, id) {
 /*Custom code from dropdown*/
 
 $rootScope.ResetPerios = function(){
-	servicesLibrary.clear('FIN_WEEK_NO');
-	servicesLibrary.clear('FIN_MONTH');
-	servicesLibrary.clear('FIN_YEAR_MONTH');
+	chartService.clear('FIN_WEEK_NO');
+	chartService.clear('FIN_MONTH');
+	chartService.clear('FIN_YEAR_MONTH');
 };
 
 //Initialise the period variables
-servicesLibrary.setStringValue('vDimPeriod','FCY');
-servicesLibrary.setStringValue('vDimPeriodName','FIN_MONTH');
+chartService.setStringValue('vDimPeriod','FCY');
+chartService.setStringValue('vDimPeriodName','FIN_MONTH');
 
 $rootScope.selectInField = function(field, value) {
-	servicesLibrary.selectValues(field, value);	
+	chartService.selectValues(field, value);	
 };
 
 

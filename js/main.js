@@ -3,10 +3,10 @@ var scriptsUrl = 'http://localhost:4848/extensions/wow/';
 require.config({
   baseUrl: "http://localhost:4848/resources",
   paths: {
-  	'app': scriptsUrl + 'js/qlikAPI/app',
+  	'app': scriptsUrl + 'js/app',
 	'homeController': scriptsUrl + 'js/controllers/homeController',  	
 	'detailsController': scriptsUrl + 'js/controllers/detailsController',
-	'services': scriptsUrl + 'js/services/services',
+	'chartService': scriptsUrl + 'js/services/chartService',
 	'setUpService': scriptsUrl + 'js/services/setUpService',
 	'emitLastRepeaterElementDirective': scriptsUrl + 'js/directives/emitLastRepeaterElementDirective',  	
 	'dropdownDirective': scriptsUrl + 'js/directives/dropdownDirective', 
@@ -52,7 +52,7 @@ define([
 
 		require([
 					'js/qlik',
-					'services',	
+					'chartService',	
 					'setUpService',
 					'homeController',				
 					'detailsController',

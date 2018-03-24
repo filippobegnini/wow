@@ -1,5 +1,5 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.controller( 'detailsController', function($scope, $rootScope,servicesLibrary, setUpService) {		
+app.obj.mashupTemplateApp.controller( 'detailsController', function($scope, $rootScope,chartService, setUpService) {		
 	console.log('detailsController');
 
 	$(document).ready(function(){
@@ -8,15 +8,15 @@ app.obj.mashupTemplateApp.controller( 'detailsController', function($scope, $roo
 		$("#P1").siblings().removeClass("active"); 
 		 
 		//clear selections from the detail page
-		servicesLibrary.clear('LEVEL4_MeasureName');
+		chartService.clear('LEVEL4_MeasureName');
 
 		//hide toggle buttons
 		$("#toggleButtons").hide();
 	});
 
 	$scope.$on('LastRepeaterElement', function(){
-		servicesLibrary.getObject($rootScope.arrayObjectsDetailsController);	
-		servicesLibrary.modelKPI($rootScope.arrayKPIsCommon);
+		chartService.getObject($rootScope.arrayObjectsDetailsController);	
+		chartService.modelKPI($rootScope.arrayKPIsCommon);
 	});	
 
 	$rootScope.Leve3Cathegory = [
