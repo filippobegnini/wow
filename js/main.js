@@ -30,9 +30,9 @@ var config = configfile.development;
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
 var baseUrl = (config.isSecure ? "https://" : "http://") + config.qlikConfig.host + (config.qlikConfig.port ? ":" + config.qlikConfig.port : "") + config.qlikConfig.prefix;
 
-console.log(baseUrl)
+
 var scriptsUrl = window.location.protocol + "//" +  window.location.host + "/extensions/" + window.location.pathname.split('/')[2] +'/';
-console.log(scriptsUrl)
+
 
 require.config({
 	baseUrl: baseUrl + "resources",
