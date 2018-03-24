@@ -1,17 +1,19 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.service('setUpService', function($rootScope, chartService) {
+app.service('setUpService', function($rootScope, chartService) {
 	console.log('setUpService');
-	app.boot();
+
+	app.qlikDoc = app.qlik.openApp("Woolworths - v0.8.qvf", config);
+
 
 	//Current Selection
-	app.obj.app.getObject( 'QV00', 'CurrentSelections' );
+	app.qlikDoc.getObject( 'QV00', 'CurrentSelections' );
 	//End Current Selection
 
 	// Filters
-	app.obj.app.getObject('qsFilter11','Fhufcmj');
-	// app.obj.app.getObject('qsFilter12','eSBVBX');
-	// app.obj.app.getObject('qsFilter13','eSBVBX');
-	// app.obj.app.getObject('qsFilter14','eSBVBX');
+	app.qlikDoc.getObject('qsFilter11','Fhufcmj');
+	//  chartService.getObject('qsFilter12','eSBVBX');
+	//  chartService.getObject('qsFilter13','eSBVBX');
+	//  chartService.getObject('qsFilter14','eSBVBX');
 
 	// End Filters	
 
@@ -45,6 +47,8 @@ app.obj.mashupTemplateApp.service('setUpService', function($rootScope, chartServ
 	/////////////////////
 	//---Object
 	/////////////////////
+
+
 
 	/////////////////////
 	//---KPIs
@@ -153,6 +157,8 @@ app.obj.mashupTemplateApp.service('setUpService', function($rootScope, chartServ
 	// //---Legend
 	/////////////////////	
 
+
+	
 /*Custom code from dropdown*/
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */

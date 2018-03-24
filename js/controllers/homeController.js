@@ -1,5 +1,5 @@
 //********** home Controllers
-app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootScope, chartService, setUpService) {
+app.controller('homeController', function ($scope, $rootScope, chartService, setUpService) {
 	console.log('home');
 
 	$(document).ready(function () {
@@ -230,7 +230,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 	this.driversSelector = function () {
 
-		app.obj.app.getObject('ruNhWC').then(function (model) {
+		 app.qlikDoc.getObject('ruNhWC').then(function (model) {
 			model.getHyperCubeData('/qHyperCubeDef', [{
 				qTop: 0,
 				qLeft: 0,
@@ -246,12 +246,12 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 						"Driver3ID": d[4].qText,
 					};
 				});
-				app.obj.app.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver1ID)], true, true);
-				app.obj.app.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver2ID)], true, true);
-				app.obj.app.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver3ID)], true, true);
-				app.obj.app.field('DRIVERS_MeasureName').selectPossible().then(function (result) {
+				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver1ID)], true, true);
+				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver2ID)], true, true);
+				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver3ID)], true, true);
+				 app.qlikDoc.field('DRIVERS_MeasureName').selectPossible().then(function (result) {
 					if (result) {
-						app.obj.app.field('DRIVERS_MeasureID').clear();
+						 app.qlikDoc.field('DRIVERS_MeasureID').clear();
 					}
 				});
 			});
@@ -263,7 +263,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		console.log('coloursKPI');
 		angular.forEach(objectsArray, function (value) {
 			strObj = value.qsObjectID;
-			app.obj.app.getObject(strObj, value.qsObject).then(function (model) {
+			 app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
 				str = '.' + value.qsObjectID + '_1';
 				$(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
 				model.Validated.bind(function () {
@@ -274,7 +274,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	};
 
-	app.obj.app.getObject('sGepUe').then(function (model) {
+	 app.qlikDoc.getObject('sGepUe').then(function (model) {
 		console.log('legend');
 		$rootScope.tempA = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -306,7 +306,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	});
 
-	app.obj.app.getObject('kDcPaSy').then(function (model) {
+	 app.qlikDoc.getObject('kDcPaSy').then(function (model) {
 		console.log('legend');
 		$rootScope.tempB = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -338,7 +338,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	});
 
-	app.obj.app.getObject('degaqC').then(function (model) {
+	 app.qlikDoc.getObject('degaqC').then(function (model) {
 		console.log('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -370,7 +370,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	});
 
-	app.obj.app.getObject('UPEdhp').then(function (model) {
+	 app.qlikDoc.getObject('UPEdhp').then(function (model) {
 		console.log('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -402,7 +402,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	});
 
-	app.obj.app.getObject('YLdaGXX').then(function (model) {
+	 app.qlikDoc.getObject('YLdaGXX').then(function (model) {
 		console.log('legend');
 		$rootScope.tempD = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -434,7 +434,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		});
 	});
 
-	app.obj.app.getObject('LFwBur').then(function (model) {
+	 app.qlikDoc.getObject('LFwBur').then(function (model) {
 		console.log('legend');
 		$rootScope.tempE = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -467,7 +467,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 	});
 
 	var prev = 'Brisbane RDC';
-	app.obj.app.createList({
+	 app.qlikDoc.createList({
 		"qDef": {
 			"qFieldDefs": [
 				"DC_Name"
@@ -481,10 +481,10 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 		}]
 	}, function (reply) {
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 0) {
-			app.obj.app.field('DC_Name').selectValues([prev], true, true);
+			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true);
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 2) {
-			app.obj.app.field('DC_Name').selectValues([prev], true, true)
+			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true)
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 1) {
 			angular.forEach(reply.qListObject.qDataPages["0"].qMatrix, function (value) {
@@ -494,7 +494,7 @@ app.obj.mashupTemplateApp.controller('homeController', function ($scope, $rootSc
 			});
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected > 2) {
-			app.obj.app.field('DC_Name').clear();
+			 app.qlikDoc.field('DC_Name').clear();
 		};
 	});
 

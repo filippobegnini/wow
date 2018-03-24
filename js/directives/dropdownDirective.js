@@ -1,5 +1,5 @@
 //********** emitLastRepeaterElement
-app.obj.mashupTemplateApp.directive('dropdownDirective', [function($rootScope) {
+app.directive('dropdownDirective', [function($rootScope) {
 	console.log('dropDown');
     return {
         restrict : 'E',
@@ -10,7 +10,7 @@ app.obj.mashupTemplateApp.directive('dropdownDirective', [function($rootScope) {
         	dropdownclass: '=',
         	dropdownfieldselect: '='
         },
-        template : '<div class="{{dropdownclass}}"><div style="padding-top: 5px; padding-bottom: 5px;" type="button" ng-click="dropDownFunctionProva(dropdownid)"><span>{{dropdownlabel}}</span><span class="caret"></span></div></div><div id="{{dropdownid}}" class="dropdown-content"><ul class="scrollable-menu"><li ng-repeat="x in ABC" ng-click=""><a href="" class="{{x[0].qState}}" ng-click="selectInFieldDD(x[0].qText)">{{x[0].qText}}</a></li></ul></div>',
+        templateUrl: '../views/dropdown.html',
         controller: function($scope, $rootScope){
         	app.boot();
         		$scope.selectInFieldDD = function(id){
@@ -20,7 +20,7 @@ app.obj.mashupTemplateApp.directive('dropdownDirective', [function($rootScope) {
         		$scope.dropDownFunctionProva = function(b) {
         			$rootScope.dropDownFunction('toggle', b);
         		};
-				app.obj.app.createList({
+				app.createList({
 					"qDef": {
 						"qFieldDefs": [
 						$scope.dropdownlist

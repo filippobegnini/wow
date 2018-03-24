@@ -1,0 +1,13 @@
+<div class="{{dropdownclass}}">
+    <div style="padding-top: 5px; padding-bottom: 5px;" type="button" ng-click="dropDownFunctionProva(dropdownid)">
+        <span>{{dropdownlabel}}</span>
+        <span class="caret"></span>
+    </div>
+</div>
+<div id="{{dropdownid}}" class="dropdown-content">
+    <ul class="scrollable-menu">
+        <li ng-repeat="x in ABC" ng-click="">
+            <a href="" class="{{x[0].qState}}" ng-click="selectInFieldDD(x[0].qText)">{{x[0].qText}}</a>
+        </li>
+    </ul>
+</div>
