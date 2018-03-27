@@ -1,0 +1,31 @@
+.kra-header{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.L1-kra-box{
+	background-color: #FFFFFF;
+    margin-bottom: 10px;
+    /*box-shadow: 0 10px 6px -6px #9c9c9c;*/
+    border-width: 2px;
+    border-style: solid;
+    border-color: #d31145;
+    border-radius: 10px;  
+    font-weight: bold; 
+}
+
+.kra-box{
+	padding-left: 0px;
+	padding-right: 0px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #58585A;
+    border-radius: 10px;   	
+}
+
+.kra-box-body{
+	text-align: right;
+	background-color: #FFFFFF;
+    border-radius: 10px;   	
+}

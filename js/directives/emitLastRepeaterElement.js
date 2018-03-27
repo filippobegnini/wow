@@ -1,5 +1,5 @@
 //********** emitLastRepeaterElement
-app.directive('emitLastRepeaterElement', function() {
+app.obj.mashupTemplateApp.directive('emitLastRepeaterElement', function() {
 	console.log('emitLastRepeaterElement');
 	return function(scope) {
 		if (scope.$last){

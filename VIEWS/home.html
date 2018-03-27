@@ -1,0 +1,145 @@
+<div class="container-fluid">
+<!-- 	<div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		<span id="errmsg"></span>
+	</div> -->
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 L1-box">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 L1-inner-box">
+				<table>
+					<tr>
+						<td style="background-color: #d31145;"><img src="IMG/009-shipped.png" style="height: 50; width: 85px; opacity: 0.7; padding-left: 20px;"></td>
+						<td style="background-color: #d31145; color: #FFFFFF;">
+							<div id="qsKPIhome000_SubTitle" style="padding-top: 10px;"></div>
+							<div id="qsKPIhome000_0"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 L1-inner-box">
+				<table>
+					<tr>
+						<td>
+							<div style="padding-top: 10px;">Target</div>
+							<div id="qsKPIhome001_0"></div>
+						</td>
+						<td>
+							<div class="L1-target-change" style="background-color: #d31145;" id="qsKPIhome001_1"></div>
+						</td>
+					</tr>					
+				</table>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 L1-inner-box">
+				<table>
+					<tr>
+						<td>
+							<div style="padding-top: 10px;">Previous Year</div>
+							<div id="qsKPIhome002_0"></div>
+						</td>
+						<td>
+							<div class="L1-target-change" style="background-color: #d31145;" id="qsKPIhome002_1"></div>
+						</td>
+					</tr>					
+				</table>
+			</div>						
+		</div>
+		<div id="qsKPIhome000" style="height: 0px;"></div>
+		<div id="qsKPIhome001" style="height: 0px;"></div>
+		<div id="qsKPIhome002" style="height: 0px;"></div>
+	</div>
+
+	<div class="row" style="margin-right: -5px; margin-left: -5px;">
+		<div ng-repeat="list in Summary" emit-last-repeater-element ng-click="goToKRA(list.MetricClick)">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 KPIbox">
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 box">
+						<div class="L2IMG"><img src="{{list.IMG}}" style="height: 100px;"></div>
+						<div id="{{list.Title}}" class="L2Title"></div>
+						<div id="{{list.MetricTitle}}" class="L2SubTitle"></div>				
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 L2-metric" style="height: 260px;">
+						<table style="margin-top: 10px;">
+							<tr>
+								<td style="width: 60%">
+									<div id="{{list.MetricDial}}" style="height: 150px; margin: -20px;"></div>
+									<div>Actuals</div>
+								</td>
+								<td>
+									<div class="target-change {{list.MetricClass}} L2-metric-value" id="{{list.MetricTargetChange}}"></div>
+									<div style="margin-top: 15px;">Target</div>
+									<div id="{{list.MetricTarget}}" class="L2-metric-value"></div>
+								</td>
+							</tr>
+						</table>
+						<div id="{{list.ObjTarget}}" style="height: 0px;"></div>
+						<div id="{{list.MetricClassObj}}" style="height: 0px;"></div>
+						<table style="margin-top: 20px;">
+							<tr>
+								<td style="width: 50%">Previous Year</td>
+								<td>Change</td>
+							</tr>
+							<tr>
+								<td style="width: 50%" id="{{list.MetricPCP}}" class="L2-metric-value"></td>
+								<td id="{{list.MetricPCPChange}}" class="L2-metric-value"></td>
+							</tr>
+							<div id="{{list.ObjPCP}}" style="height: 0px;"></div>							
+						</table>	
+						<div id="{{list.MetricPCPVis}}" style="height: 30px; margin-left: 10px; margin-right: 10px;"></div>					
+					</div>
+				</div>
+				<div class="row L2-chart-box">
+					<div id="{{list.Trend}}" class="L2-chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 20px; margin-bottom: 20px; margin-left: -15px; margin-right: -15px;">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			legend
+		</div>	
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		    <button type="button" class="btn btn-default cta-button" ng-click="showDetailKPI()" style="float: right;">
+		        <span>Show Detail KPIs</span>
+		    </button>			
+		</div>	
+	</div>
+
+	<div class="row" ng-show="L3kpi" style="margin-right: -5px; margin-left: -5px;">
+		<div ng-repeat="list in Summary" emit-last-repeater-element>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 KPIbox">
+				<div class="L3-kpi-box-header">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Actuals</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Target</div>
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Previous Year</div>					
+				</div>
+				<div ng-repeat="lista in list.SubMetric">
+					<div class="L3-kpi-table">
+						<div class="row" style="font-weight: bold; padding-top: 5px;">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="{{lista.SubMetricTitle}}"></div>
+						</div>
+						<div class="row L3-kpi-box">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="{{lista.SubMetric}}"></div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div style="float: right;">
+									<div id="{{lista.SubMetricTargetChange}}" class="target-change {{lista.SubMetricTargetClass}}"></div>									
+								</div>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="{{lista.SubMetricPCPChange}}"></div>						
+						</div>						
+					</div>
+					<div id="{{lista.SubMetricObj}}" style="height: 0px;"></div>
+					<div id="{{lista.SubMetricTargetClassObj}}" style="height: 0px;"></div>
+					<div id="{{lista.SubMetricObjTarget}}" style="height: 0px;"></div>
+					<div id="{{lista.SubMetricObjPCP}}" style="height: 0px;"></div>					
+				</div>
+			</div>
+		</div>			
+	</div>
+
+	<div>
+		<div><a href="#/kra">prova</a></div>
+	</div>
+
+</div>

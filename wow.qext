@@ -1,6 +1,6 @@
 {
 	"type": "mashup",
-	"name": "Woolworths Mashup",
-	"description": "A mashup for Woolworths group. Angular based mashup. Sense 3.2 + required",
+	"name": "mashupName",
+	"description": "Angular based mashup. Sense 3.2 + required",
     "preview": ""
 }

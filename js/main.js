@@ -3,12 +3,12 @@
 var configfile = {
 	"development": {
 		"qlikConfig": {
-			"host": "localhost",
+			"host": "ausyd-extahq.qliktech.com",
 			"prefix": "/",
-			"port": 4848,
+			"port": 443,
 			"isSecure": window.location.protocol === "https:"
 		},
-		"appId": "Woolworths - v0.8.qvf"
+		"appId": "14bd515c-c2f7-4d39-8c05-06431e41a8a3"
 	},
 	"production": {
 		"qlikConfig": {
