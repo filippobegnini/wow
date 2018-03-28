@@ -3,12 +3,12 @@
 var configfile = {
 	"development": {
 		"qlikConfig": {
-			"host": "localhost",
+			"host": "ausyd-extahq.qliktech.com",
 			"prefix": "/",
-			"port": 4848,
+			"port": 443,
 			"isSecure": window.location.protocol === "https:"
 		},
-		"appId": "Woolworths - v0.8.qvf"
+		"appId": "cc95c674-d119-432d-81fc-03f9ea67e5d4"
 	},
 	"production": {
 		"qlikConfig": {
@@ -40,6 +40,8 @@ require.config({
 		'mainController': scriptsUrl + 'js/controllers/mainController',
 		'homeController': scriptsUrl + 'js/controllers/homeController',
 		'detailsController': scriptsUrl + 'js/controllers/detailsController',
+		'kra': scriptsUrl + 'js/controllers/kra',
+		'metricanalysis': scriptsUrl + 'js/controllers/metricanalysis',	
 		'chartService': scriptsUrl + 'js/services/chartService',
 		'setUpService': scriptsUrl + 'js/services/setUpService',
 		'dropdownDirective': scriptsUrl + 'js/directives/dropdownDirective',
@@ -62,6 +64,14 @@ define([
 
 	app.config(function ($routeProvider) {
 		$routeProvider
+			.when( '/metricanalysis', {
+				templateUrl: 'js/views/metricanalysis.html',
+				controller: 'metricanalysisCtrl'
+			})				
+			.when( '/kra', {
+				templateUrl: 'js/views/kra.html',
+				controller: 'kraCtrl'
+			})	
 			.when('/details', {
 				templateUrl: 'js/views/details.html',
 				controller: 'detailsController'
@@ -89,6 +99,8 @@ define([
 		'mainController',
 		'homeController',
 		'detailsController',
+		'kra',	
+		'metricanalysis',
 		'dropdownDirective',
 		'emitLastRepeaterElement'
 	], function (qlik) {
