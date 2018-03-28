@@ -13,6 +13,7 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "font-awesome": "^4.7.0",
-    "jquery": "1.11.0"
+    "jquery": "1.11.0",
+    "underscore": "^1.8.3"
   }
 }

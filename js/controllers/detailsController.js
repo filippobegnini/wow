@@ -21,7 +21,7 @@ app.controller('detailsController', function ($scope, $log, $rootScope, chartSer
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
 	});	
 
-	$rootScope.Leve3Cathegory = [
+	$scope.Leve3Cathegory = [
 		{
 			Line: [
 				{ Title: "Timeliness", Class: "L3BoxGreen L3Box", id: "DW01", qsListField: '=if(LEVEL4_Timeliness=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },

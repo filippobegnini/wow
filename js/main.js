@@ -43,7 +43,7 @@ require.config({
 		'metricanalysis': scriptsUrl + 'js/controllers/metricanalysis',	
 		'chartService': scriptsUrl + 'js/services/chartService',
 		'setUpService': scriptsUrl + 'js/services/setUpService',
-		'dropdownDirective': scriptsUrl + 'js/directives/dropdownDirective',
+		'dropdownDirective': scriptsUrl + 'js/directives/dropdown/dropdown.directive',
 		'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',
 	}
 });
@@ -71,7 +71,7 @@ define([
 				templateUrl: 'js/views/kra.html',
 				controller: 'kraCtrl'
 			})	
-			.when('/details', {
+			.when('/drivers', {
 				templateUrl: 'js/views/details.html',
 				controller: 'detailsController'
 			})
