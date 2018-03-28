@@ -45,20 +45,20 @@ app.service('chartService', function ($log) {
             app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
                 //Primary Measure
                 str = '#' + value.qsObjectID + '_0';
-                $(str).text(model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText);
+                angular.element(str).text(model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText);
                 // //Primary Measure Colour
                 // if(model.layout.qHyperCube.qMeasureInfo["0"].conditionalColoring.paletteSingleColor.color) {
                 // 	str = '.' + value.qsObjectID + '_0Class'; 
-                // 	$(str).css("color", model.layout.qHyperCube.qMeasureInfo["0"].conditionalColoring.paletteSingleColor.color);
+                // 	angular.element(str).css("color", model.layout.qHyperCube.qMeasureInfo["0"].conditionalColoring.paletteSingleColor.color);
                 // };
                 //Primary Measure Label
                 str = '#' + value.qsObjectID + '_0Title';
-                $(str).text(model.layout.qHyperCube.qMeasureInfo["0"].qFallbackTitle);
+                angular.element(str).text(model.layout.qHyperCube.qMeasureInfo["0"].qFallbackTitle);
 
                 model.Validated.bind(function () {
                     //Primary Measure
                     str = '#' + value.qsObjectID + '_0';
-                    $(str).text(this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText);
+                    angular.element(str).text(this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText);
                     // //Primary Measure Colour
                     // if(this.layout.qHyperCube.qMeasureInfo["0"].conditionalColoring.paletteSingleColor.color) {
                     // 	str = value.qsObjectID + '_0Colour'; 
@@ -66,15 +66,16 @@ app.service('chartService', function ($log) {
                     // };	
                     //Primary Measure Label					
                     str = '#' + value.qsObjectID + '_0Title';
-                    $(str).text(this.layout.qHyperCube.qMeasureInfo["0"].qFallbackTitle);
+                    angular.element(str).text(this.layout.qHyperCube.qMeasureInfo["0"].qFallbackTitle);
                 });
-                //Secondary Measure 
+
+                //Secondary Measure
                 if (model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"]) {
                     str = '#' + value.qsObjectID + '_1';
-                    $(str).text(model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText);
+                    angular.element(str).text(model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText);
 
                     str = '.' + value.qsObjectID + '_1Value';
-                    $(str).css({ "border-left-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText });
+                    angular.element(str).css({ "border-left-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText });
                     // $log.info(str);
                     // $log.info($rootScope[str]);
 
@@ -85,14 +86,14 @@ app.service('chartService', function ($log) {
                     // };					
                     //Secondary Measure Label
                     str = '#' + value.qsObjectID + '_1Title';
-                    $(str).text(model.layout.qHyperCube.qMeasureInfo["1"].qFallbackTitle);
+                    angular.element(str).text(model.layout.qHyperCube.qMeasureInfo["1"].qFallbackTitle);
 
                     model.Validated.bind(function () {
                         //Secondary Measure
                         str = '#' + value.qsObjectID + '_1';
-                        $(str).text(this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText);
+                        angular.element(str).text(this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText);
                         str = '.' + value.qsObjectID + '_1Value';
-                        $(str).css({ "border-left-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText });
+                        angular.element(str).css({ "border-left-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["1"].qText });
                         // //Secondary Measure Colour
                         // if(this.layout.qHyperCube.qMeasureInfo["1"].conditionalColoring.paletteSingleColor.color) {
                         // 	str = value.qsObjectID + '_1Colour'; 
@@ -100,34 +101,34 @@ app.service('chartService', function ($log) {
                         // };					
                         //Secondary Measure Label
                         str = '#' + value.qsObjectID + '_1Title';
-                        $(str).text(this.layout.qHyperCube.qMeasureInfo["1"].qFallbackTitle);
+                        angular.element(str).text(this.layout.qHyperCube.qMeasureInfo["1"].qFallbackTitle);
                     });
                 };
 
                 str = '#' + value.qsObjectID + '_Title';
                 if (model.layout.title) {
-                    $(str).text(model.layout.title);
+                    angular.element(str).text(model.layout.title);
                     model.Validated.bind(function () {
                         str = '#' + value.qsObjectID + '_Title';
-                        $(str).text(this.layout.title);
+                        angular.element(str).text(this.layout.title);
                     });
                 };
 
                 str = '#' + value.qsObjectID + '_SubTitle';
                 if (model.layout.subtitle) {
-                    $(str).text(model.layout.subtitle);
+                    angular.element(str).text(model.layout.subtitle);
                     model.Validated.bind(function () {
                         str = '#' + value.qsObjectID + '_SubTitle';
-                        $(str).text(this.layout.subtitle);
+                        angular.element(str).text(this.layout.subtitle);
                     });
                 };
 
                 str = '#' + value.qsObjectID + '_Footer';
                 if (model.layout.footer) {
-                    $(str).text(model.layout.footer);
+                    angular.element(str).text(model.layout.footer);
                     model.Validated.bind(function () {
                         str = '#' + value.qsObjectID + '_Footer';
-                        $(str).text(this.layout.footer);
+                        angular.element(str).text(this.layout.footer);
                     });
                 };
             });
@@ -143,7 +144,7 @@ app.service('chartService', function ($log) {
         angular.forEach(objectsArray, function (value) {
             app.qlikDoc.getObject(value.qsObject).then(function (model) {
                 str = '#' + value.qsObjectID;
-                $(str).text(model.layout.qHyperCube.qGrandTotalRow[0].qText);
+                angular.element(str).text(model.layout.qHyperCube.qGrandTotalRow[0].qText);
             });
         });
     };
@@ -206,10 +207,10 @@ app.service('chartService', function ($log) {
             strObj = value.qsObjectID;
             app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
                 str = '.' + value.qsObjectID + '_1';
-                $(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+                angular.element(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
                 model.Validated.bind(function () {
                     str = '.' + value.qsObjectID + '_1';
-                    $(str).css({ "background-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+                    angular.element(str).css({ "background-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
                 });
             });
         });

@@ -1,26 +1,17 @@
 //********** home Controllers
-app.controller('homeController', function ($scope, $log, $rootScope, chartService, setUpService) {
+app.controller('homeController', function ($scope, $log, $rootScope, $location, chartService, setUpService) {
 	$log.info('home');
 
-	$(document).ready(function () {
-		//highlight this as the selected page
-		$("#P0").addClass("active");
-		$("#P0").siblings().removeClass("active");
 
-		//clear selections from the detail page
-		chartService.clear('LEVEL4_MeasureName');
 
-		//show toggle buttons
-		$("#toggleButtons").show();
-	});
 
-	$scope.$on('LastRepeaterElement', function () {
-		chartService.modelKPI($rootScope.arrayKPIs);
-		chartService.modelKPI($rootScope.arrayKPIsCommon);
-		$log.info($rootScope.arrayObjects)
-		chartService.getObject($rootScope.arrayObjects);
-		chartService.coloursKPI($rootScope.arrayColoursKPI);
-	});
+		$scope.$on('LastRepeaterElement', function () {
+			chartService.modelKPI($rootScope.arrayKPIs);
+			chartService.modelKPI($rootScope.arrayKPIsCommon);
+			$log.info($rootScope.arrayObjects)
+			chartService.getObject($rootScope.arrayObjects);
+			chartService.coloursKPI($rootScope.arrayColoursKPI);
+		});
 
 
 	$rootScope.Summary = [
@@ -230,7 +221,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 	this.driversSelector = function () {
 
-		 app.qlikDoc.getObject('ruNhWC').then(function (model) {
+		app.qlikDoc.getObject('ruNhWC').then(function (model) {
 			model.getHyperCubeData('/qHyperCubeDef', [{
 				qTop: 0,
 				qLeft: 0,
@@ -246,12 +237,12 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 						"Driver3ID": d[4].qText,
 					};
 				});
-				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver1ID)], true, true);
-				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver2ID)], true, true);
-				 app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver3ID)], true, true);
-				 app.qlikDoc.field('DRIVERS_MeasureName').selectPossible().then(function (result) {
+				app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver1ID)], true, true);
+				app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver2ID)], true, true);
+				app.qlikDoc.field('DRIVERS_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver3ID)], true, true);
+				app.qlikDoc.field('DRIVERS_MeasureName').selectPossible().then(function (result) {
 					if (result) {
-						 app.qlikDoc.field('DRIVERS_MeasureID').clear();
+						app.qlikDoc.field('DRIVERS_MeasureID').clear();
 					}
 				});
 			});
@@ -263,18 +254,18 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		$log.info('coloursKPI');
 		angular.forEach(objectsArray, function (value) {
 			strObj = value.qsObjectID;
-			 app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
+			app.qlikDoc.getObject(strObj, value.qsObject).then(function (model) {
 				str = '.' + value.qsObjectID + '_1';
-				$(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+				angular.element(str).css({ "background-color": model.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
 				model.Validated.bind(function () {
 					str = '.' + value.qsObjectID + '_1';
-					$(str).css({ "background-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
+					angular.element(str).css({ "background-color": this.layout.qHyperCube.qDataPages["0"].qMatrix["0"]["0"].qText });
 				});
 			});
 		});
 	};
 
-	 app.qlikDoc.getObject('sGepUe').then(function (model) {
+	app.qlikDoc.getObject('sGepUe').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempA = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -306,7 +297,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		});
 	});
 
-	 app.qlikDoc.getObject('kDcPaSy').then(function (model) {
+	app.qlikDoc.getObject('kDcPaSy').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempB = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -338,7 +329,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		});
 	});
 
-	 app.qlikDoc.getObject('degaqC').then(function (model) {
+	app.qlikDoc.getObject('degaqC').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -370,7 +361,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		});
 	});
 
-	 app.qlikDoc.getObject('UPEdhp').then(function (model) {
+	app.qlikDoc.getObject('UPEdhp').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempC = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -402,7 +393,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		});
 	});
 
-	 app.qlikDoc.getObject('YLdaGXX').then(function (model) {
+	app.qlikDoc.getObject('YLdaGXX').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempD = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -434,7 +425,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		});
 	});
 
-	 app.qlikDoc.getObject('LFwBur').then(function (model) {
+	app.qlikDoc.getObject('LFwBur').then(function (model) {
 		$log.info('legend');
 		$rootScope.tempE = angular.forEach(model.layout.qHyperCube.qMeasureInfo, function (value) {
 		});
@@ -467,7 +458,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	});
 
 	var prev = 'Brisbane RDC';
-	 app.qlikDoc.createList({
+	app.qlikDoc.createList({
 		"qDef": {
 			"qFieldDefs": [
 				"DC_Name"
@@ -481,10 +472,10 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		}]
 	}, function (reply) {
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 0) {
-			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true);
+			app.qlikDoc.field('DC_Name').selectValues([prev], true, true);
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 2) {
-			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true)
+			app.qlikDoc.field('DC_Name').selectValues([prev], true, true)
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 1) {
 			angular.forEach(reply.qListObject.qDataPages["0"].qMatrix, function (value) {
@@ -494,7 +485,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 			});
 		};
 		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected > 2) {
-			 app.qlikDoc.field('DC_Name').clear();
+			app.qlikDoc.field('DC_Name').clear();
 		};
 	});
 
@@ -508,9 +499,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		{ ChartID: "qsObjectHomePopUpDrivers", ChartDropDown: "show", CustomLegend: "show", id: "DW00" },
 	];
 
-	$("#sidebarCollapse").click(function () {
-		chartService.resize();
-	});
+
 
 	//This function select the MeasureID, open the modal, and resize the objects
 	$scope.HomePopUp = function (objectID) {
@@ -525,41 +514,13 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	//This function toggle between Target and PCP
 	$rootScope.ToggleTgPCP = function (id) {
 		chartService.setStringValue('vComp', id);
-		$(document).ready(function () {
-			$(".btn").click(function () {
-				$(this).addClass("active");
-				$(this).siblings().removeClass("active");
-			});
-		});
+
 	};
 
-	//This function toggle between CW CM YTD
-	$rootScope.TogglePeriod = function (id) {
-		chartService.setStringValue('vDimPeriod', id);
 
-		var PeriodName = '';
 
-		if (id == 'CW') {
-			PeriodName = 'FIN_WEEK_NO';
-		};
-		if (id == 'CM') {
-			PeriodName = 'FIN_YEAR_MONTH';
-		};
-		if (id == 'FCY') {
-			PeriodName = 'FIN_MONTH';
-		};
 
-		chartService.setStringValue('vDimPeriodName', PeriodName);
-
-		$(document).ready(function () {
-			$(".btn").click(function () {
-				$(this).addClass("active");
-				$(this).siblings().removeClass("active");
-			});
-		});
-	};
-
-	$('#myModalHome').on('hidden.bs.modal', function () {
+	angular.element('#myModalHome').on('hidden.bs.modal', function () {
 		chartService.clear('MeasureID');
 		chartService.clear('DRIVERS_MeasureName');
 	});
@@ -574,8 +535,9 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 				{ qsObjectID: "qsObjectHomePopUp", qsObject: $rootScope.modalObjects[2].qsObject }
 			];
 			chartService.getObject($rootScope.ModalChartSelectorArray);
-			$("#ModalChartSelectorFirst").addClass("active");
-			$("#ModalChartSelectorFirst").siblings().removeClass("active");
+
+			angular.element("#ModalChartSelectorFirst").parent().children().removeClass('active');
+			angular.element("#ModalChartSelectorFirst").addClass("active");
 		};
 		if (id == 2) {
 			$(".customDropdown").hide();
@@ -607,12 +569,11 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 			chartService.getObject($rootScope.ModalChartSelectorArray);
 		};
 
-		$(document).ready(function () {
-			$(".btn").click(function () {
-				$(this).addClass("active");
-				$(this).siblings().removeClass("active");
-			});
+
+		$("#sidebarCollapse").click(function () {
+			chartService.resize();
 		});
+
 	};
 });
 //********** End Summary Controllers

@@ -28,7 +28,7 @@ var config = configfile.development;
 //////////////////////////////////////////////////////
 
 var prefix = window.location.pathname.substr(0, window.location.pathname.toLowerCase().lastIndexOf("/extensions") + 1);
-var baseUrl = (config.isSecure ? "https://" : "http://") + config.qlikConfig.host + (config.qlikConfig.port ? ":" + config.qlikConfig.port : "") + config.qlikConfig.prefix;
+var baseUrl = (config.qlikConfig.isSecure ? "https://" : "http://") + config.qlikConfig.host + (config.qlikConfig.port ? ":" + config.qlikConfig.port : "") + config.qlikConfig.prefix;
 
 
 var scriptsUrl = window.location.protocol + "//" +  window.location.host + "/extensions/" + window.location.pathname.split('/')[2] +'/';
@@ -37,6 +37,7 @@ var scriptsUrl = window.location.protocol + "//" +  window.location.host + "/ext
 require.config({
 	baseUrl: baseUrl + "resources",
 	paths: {
+		'mainController': scriptsUrl + 'js/controllers/mainController',
 		'homeController': scriptsUrl + 'js/controllers/homeController',
 		'detailsController': scriptsUrl + 'js/controllers/detailsController',
 		'chartService': scriptsUrl + 'js/services/chartService',
@@ -85,6 +86,7 @@ define([
 		'js/qlik',
 		'chartService',
 		'setUpService',
+		'mainController',
 		'homeController',
 		'detailsController',
 		'dropdownDirective',

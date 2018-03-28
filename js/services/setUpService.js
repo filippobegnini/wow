@@ -143,20 +143,6 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 	//---List
 	/////////////////////
 
-	// /////////////////////
-	// //---Legend
-	// /////////////////////
-	// 	$rootScope.arrayLegend = [
-	// 		{qsObjectID:'qsObjectHomePopUpPercLegend',		qsObject:'sGepUe'},	
-	// 		{qsObjectID:'qsObjectHomePopUpNumLegend',		qsObject:'kDcPaSy'},		
-	// 		{qsObjectID:'qsObjectHomePopUpBigNumLegend',	qsObject:'degaqC'},		
-	// 		// {qsObjectID:'qsObjectDetailsChartLegend',		qsObject:'kpuXx'},			
-	// 	];
-	// /////////////////////
-	// //---Legend
-	/////////////////////	
-
-
 	
 /*Custom code from dropdown*/
 /* When the user clicks on the button, 
@@ -176,7 +162,7 @@ $rootScope.dropDownFunction =  function(action, id) {
 	$log.info('dropDownFunction');
 	str = '#' + id;
 	if(action == 'toggle') {
-		$(str).toggleClass('show');
+		angular.element(str).toggleClass('show');
 		if ($rootScope.driverDropdown == 'Close Menu') {
 			$rootScope.driverDropdown = 'Select Measure';
 		} else {
@@ -186,7 +172,7 @@ $rootScope.dropDownFunction =  function(action, id) {
 	angular.forEach($rootScope.dropDownDetailsArray, function(value){
 		if(value.id != id) {
 			str = '#' + value.id;
-			$(str).removeClass('show');
+			angular.element(str).removeClass('show');
 		}
 	});
 };

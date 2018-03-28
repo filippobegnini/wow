@@ -1,11 +1,12 @@
 //********** home Controllers
-app.controller('detailsController', function ($scope, $log, $rootScope, chartService, setUpService) {
+app.controller('detailsController', function ($scope, $log, $rootScope, $location, chartService, setUpService) {
 	$log.info('detailsController');
 
-	$(document).ready(function () {
+
+	angular.element(document).ready(function () {
 		//highlight this as the selected page
-		$("#P1").addClass("active");
-		$("#P1").siblings().removeClass("active");
+		angular.element("#P1").parent().children().removeClass('active');
+		angular.element("#P1").addClass("active");
 
 		//clear selections from the detail page
 		chartService.clear('LEVEL4_MeasureName');
@@ -13,7 +14,8 @@ app.controller('detailsController', function ($scope, $log, $rootScope, chartSer
 
 
 		//hide toggle buttons
-		$("#toggleButtons").hide();
+		angular.element("#toggleButtons").hide();
+
 	});
 
 	$scope.$on('LastRepeaterElement', function(){
