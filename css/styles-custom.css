@@ -1,4 +1,6 @@
-/*Original Index.css file */
+/* ---------------------------------------------------
+    INDEX
+----------------------------------------------------- */
 
 /*@font-face {
     font-family: 'QlikView Sans';
@@ -43,26 +45,15 @@ body {
     padding-bottom: 30px;
     /*font-family: "QlikView Sans", sans-serif;*/
     
-    font-family: "WHITNEY", sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: #f6f4f3; 
     color: #58585a;   
     letter-spacing: 1px;
-    overflow: auto";
     /*overflow: auto; */
 }   
 
-.top-menu-custom {
-    margin-bottom: 20px;
-}
-
-
 div.qvobject, div.qvplaceholder {
 }
-
-#toggleButtons {
-    margin-bottom: 20px;
-}
-
 
 /*Overwrite Qlik CSS*/
 .qv-global-selections{
@@ -79,30 +70,32 @@ div.qvobject, div.qvplaceholder {
 /*End Overwrite Qlik CSS*/
 
 /*Overwrite Bootstrap CSS*/
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 .navbar-default {
-    background-color: #f6f4f3;
-    border-color: #f6f4f3;
-    /*color: #58585a; */
+    background-color: #d31145;
+    border-color: #d31145;
+    border-radius: 0px;
+    color: #FFFFFF; 
 }
 
-.navbar-default .navbar-brand {
-    /*color: #FFFFFF;*/
-}
 
-.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
-    /*color: #FFFFFF;*/
-    background-color: transparent;
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #FFFFFF;
+    background-color: #00000020;
 }
 
 .navbar-default .navbar-nav>li>a {
-    /*color: #FFFFFF;*/
+    color: #FFFFFF;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    border-bottom-color: #25861E;
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    background-color: transparent;
+    background-color: #00000040;
+    color: #FFFFFF; 
 }
 /*End Overwrite Bootstrap CSS*/
 
@@ -234,78 +227,86 @@ div.qvobject, div.qvplaceholder {
 .show {display:block;}
 /*Custom code from dropdown*/
 
-.Title{
-    background-color: #57575a;
-    color: #fff;
+.home-top-banner{
+    background-color: #FFFFFF;
     left: 0px;
-    margin-right: -20px;
+/*    margin-right: -20px;
     margin-left: -20px;
-    margin-top: -20px;
-    text-align: center;
-    padding-bottom: 5px;
-    padding-top: 2px;
-    font-size: 30px;
+    margin-top: -20px;*/
+    /*padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;*/
+    padding: 25px;
 }
 
-h2 {
+.home-top-banner-text{
+    /*padding-bottom: 10px;*/
+    /*padding-top: 2px;*/
+    /*padding-right: 20px;*/
+    font-size: 25px;    
+    float: right;
+}
+
+ .home-top-banner-img{
+    height: 35px; 
+    /*margin-top: 17px; 
+    margin-right: 20px;*/
+}
+
+/*h2 {
     font-size: 14px;
     font-weight: bold;    
     padding-top: 5px;
-}
+}*/
 
-/* Original Details CSS File*/
-
-.L3Box{
-    margin-top: 10px;
-    padding: 05px;
-    border-radius: 10px;
-    text-align: center;
+.cta-button{
     color: #FFFFFF;
+    background-color: #5480b9;
+    border-color: #5480b9;
 }
 
-.L3BoxRed{
-	background-color: #f42020;
+.cta-button:hover, .cta-button:focus, .cta-button:active, .cta-button.active, .open>.dropdown-toggle.cta-button {
+    color: #FFFFFF;
+    background-color: #29558e;
+    border-color: #29558e;
 }
 
-.L3BoxAmber{
-	background-color: #F47920;
+.dc-label{
+    padding-right: 20px;
 }
 
-.L3BoxGreen{
-	background-color: #757575;
-	/*background-color: #25861E;*/
-}
-
-.legends{
-	margin-top: 50px; 
-	/*background-color: #FFFFFF; */
-	/*height: 400px;*/
-	padding-top: 20px;
-	padding-left: 50px;
-}
-
-.DetailChart{
-	height: 250px;
-	margin-right: 50px;
-}
-
-
-/* Original home.css file */
-
-
+/* ---------------------------------------------------
+    HOME
+----------------------------------------------------- */
 .KPIbox{
 	padding-right: 5px;
 	padding-left: 5px;
 	margin-top: 5px;
 }
 
-.L1KPIbox{
+.L1-box{
 	background-color: #FFFFFF;
     margin-bottom: 10px;
     /*box-shadow: 0 10px 6px -6px #9c9c9c;*/
-    border-radius: 15px;
-    padding-bottom: 15px;
-    padding-top: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #d31145;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 30px;
+    padding-right: 0px;
+    padding-left: 0px;    
+}
+
+.L1-inner-box{
+    border-width: 1px;
+    border-style: solid;	
+    border-color: #d31145;
+    padding-right: 0px;
+    padding-left: 0px;    
+    border-top-width: 0px;
+    border-bottom-width: 0px;  
 }
 
 .L1Metric{
@@ -315,79 +316,100 @@ h2 {
 }
 
 .L2IMG{
-    text-align: left;
-    margin-top: -35px;
-    margin-left: 15px;
+    text-align: center;
     opacity: 0.7;
+    margin-top: 20px;
 }
 
 .L2Title{
-	padding-top: 2%;
-	text-align: center;
-	height: 40px;
+	padding-top: 16px;
 	font-size: 30px;
-	margin-bottom: 7%;
 }
 
 .L2SubTitle{
-	margin-top: 5px;
-	text-align: center;
-	margin-top: -20px;
-    padding-bottom: 15px;
     font-weight: bold;
+    height: 82px;
 }
 
-.L2Chart{
+.L2-chart{
 	height: 200px;
 	padding-top: 10px;
 	padding-right: 20px;
 	background-color: #FFFFFF;
+	margin: 5px;
 /*	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;*/
 	/*box-shadow: 0 10px 6px -6px #9c9c9c; */
 }
 
-.L2Metric{
+.L2-chart-box{
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #58585A;	
+	border-top-width: 0px;
+	background-color: #FFFFFF;
+}
+
+.L2-metric{
     text-align: center;
-    font-size: 30px;
-    margin-right: 0px;
-    margin-left: 0px;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #58585A;
+    border-top-right-radius: 10px;
+}
+
+.L2-metric-primary{
+	font-size: 30px;
+}
+
+.L2-metric-value{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.L3-kpi-box{
+/*	background-color: #FFFFFF;*/
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #58585A;	
+    text-align: right;
+    padding-bottom: 5px;
+    line-height: 60px;
+}
+
+.L3-kpi-table{
+    border-width: 2px;
+    border-style: solid;	
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-bottom-style: solid;
+    border-color: #58585A;
     background-color: #FFFFFF;
 }
 
-.L3KPIbox{
-    margin-top: 10px; 
-    padding-top: 10px; 
-	/*box-shadow: 0 10px 6px -6px #9c9c9c;*/
-	background-color: #FFFFFF;
-	padding-bottom: 20px;
-/*	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;*/
+.L3-kpi-table:hover{
+  background-color: #f6f4f3;
 }
 
-.L3KPItrailer{
-	height: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
-
-.L3Title{
-	text-align: left;
-	padding-left: 2%;
-	/*padding-right: 5%;*/
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-
-.L3Metric{
+.L3-kpi-box-header{
+	background-color: #58585A;
+	color: #FFFFFF;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;	
+	padding-bottom: 25px;
+	/*padding-right: 15px;*/
+	padding-top: 5px;
 	text-align: right;
-	padding-right: 5%;
 }
 
 .box{
 	color: #FFFFFF;
 	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	background-color: #58585A;
+	/*border-top-right-radius: 10px;*/
 }
 
 .boxSafety{	
@@ -456,4 +478,130 @@ h2 {
     width: 10px;
     padding-bottom: 2px;
     padding-top: 2px;
+}
+
+.target-change{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	line-height: 60px;
+	text-align: center;
+	margin: auto;
+	color: #FFFFFF;
+}
+
+.L1-target-change{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	line-height: 80px;
+	text-align: center;
+	margin: auto;
+	color: #FFFFFF;
+}
+
+/* ---------------------------------------------------
+    KRA
+----------------------------------------------------- */
+.kra-header{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.L1-kra-box{
+	background-color: #FFFFFF;
+    margin-bottom: 10px;
+    /*box-shadow: 0 10px 6px -6px #9c9c9c;*/
+    border-width: 2px;
+    border-style: solid;
+    border-color: #d31145;
+    border-radius: 10px;  
+    font-weight: bold; 
+}
+
+.kra-box{
+	padding-left: 0px;
+	padding-right: 0px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #58585A;
+    border-radius: 10px;   	
+}
+
+.kra-box-body{
+	text-align: right;
+	background-color: #FFFFFF;
+    border-radius: 10px;   	
+}
+
+/* ---------------------------------------------------
+    METRIC ANALYSIS
+----------------------------------------------------- */
+.kra-header{
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.L1-kra-box{
+	background-color: #FFFFFF;
+    margin-bottom: 10px;
+    /*box-shadow: 0 10px 6px -6px #9c9c9c;*/
+    border-width: 2px;
+    border-style: solid;
+    border-color: #d31145;
+    border-radius: 10px;   
+}
+
+.kra-box{
+	padding-left: 0px;
+	padding-right: 0px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #58585A;
+    border-radius: 10px;   	
+}
+
+.kra-box-body{
+	text-align: right;
+	background-color: #FFFFFF;
+    border-radius: 10px;   	
+}
+
+/* ---------------------------------------------------
+    DETAILS
+----------------------------------------------------- */
+.L3Box{
+    margin-top: 10px;
+    padding: 05px;
+    border-radius: 10px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.L3BoxRed{
+	background-color: #f42020;
+}
+
+.L3BoxAmber{
+	background-color: #F47920;
+}
+
+.L3BoxGreen{
+	background-color: #757575;
+	/*background-color: #25861E;*/
+}
+
+.legends{
+	margin-top: 50px; 
+	/*background-color: #FFFFFF; */
+	/*height: 400px;*/
+	padding-top: 20px;
+	padding-left: 50px;
+}
+
+.DetailChart{
+	height: 250px;
+	margin-right: 50px;
 }
