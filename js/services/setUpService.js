@@ -349,6 +349,12 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 	chartService.setStringValue('vDimPeriod','FCY');
 	chartService.setStringValue('vDimPeriodName','FIN_MONTH');
 
+	$rootScope.selectInField = function(field, value) {
+		$log.info(field);
+		$log.info(value);
+		chartService.selectValues(field, value);	
+	};
+
 	$rootScope.CWactive = '';
 	$rootScope.CMactive = '';
 	$rootScope.FCYactive = 'active';
