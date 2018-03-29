@@ -3,43 +3,132 @@
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding: 0px; background-color: #d31145; font-weight: bold;">
 			<table>
 				<td style="width: 10%"><img src="{{KRA[kraID].IMG}}" style="height: 50; width: 85px; opacity: 0.7; padding-left: 20px;"></td>
-				<td style="background-color: #d31145; width: 60%; color: #FFFFFF; padding-left: 20px; height: 115px;" id="{{KRA[kraID].MetricTitle}}"></td>
-				<td style="background-color: #d31145; width: 30%; color: #FFFFFF; text-align: right; padding-right: 10px;" id="{{KRA[kraID].Metric}}"></td>
+				<td class="krs-metric-title" id="qsKPIma100_Title"></td>
+				<td style="background-color: #d31145; width: 30%; color: #FFFFFF; text-align: right; padding-right: 10px; font-size: 30px;" id="qsKPIma100_0"></td>
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-			<table>
+			<table style="margin-top: 5px;">
 				<tr class="kra-header">
-					<td>Target</td>
+					<td style="width: 50%;">Target</td>
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="{{KRA[kraID].MetricTarget}}" style="height: 85px;"></td>
+					<td id="qsKPIma101_0" style="height: 70px;"></td>
 					<td>
-						<div class="target-change" style="background-color: #e11e2e; float: right;" id="{{KRA[kraID].MetricTargetChange}}"></div>
+						<div class="target-change" style="background-color: #d31145; float: right;" id="qsKPIma101_1"></div>
 					</td>					
 				</tr>				
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-			<table>
+			<table style="margin-top: 5px;">
 				<tr class="kra-header">
-					<td>Previous Year</td>
+					<td style="width: 50%;">Previous Year</td>
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="{{KRA[kraID].MetricTarget}}" style="height: 85px;"></td>
+					<td id="qsKPIma103_0" style="height: 70px;"></td>
 					<td>
-						<div class="target-change" style="background-color: #e11e2e; float: right;" id="{{KRA[kraID].MetricTargetChange}}"></div>
+						<div class="target-change" style="background-color: #d31145; float: right;" id="qsKPIma103_1"></div>
 					</td>					
 				</tr>				
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-			
+			<div id="qsObjectSpark" style="height: 75px; margin-top: 15px;"></div>	
 		</div>	
-		<div id="{{KRA[kraID].Obj}}" style="height: 0px;"></div>
-		<div id="{{KRA[kraID].ObjTarget}}" style="height: 0px;"></div>
-		<div id="{{KRA[kraID].ObjPCP}}" style="height: 0px;"></div>					
+		<div id="qsKPIma100" style="height: 0px;"></div>
+		<div id="qsKPIma101" style="height: 0px;"></div>
+		<div id="qsKPIma103" style="height: 0px;"></div>					
+	</div>		
+
+	<div class="row" style="margin-left: -5px; margin-right: -5px;">
+		<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma-box"> -->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0px;">
+				<div style="padding: 5px;">
+					<div class="ma-box">
+						<div class="ma-header">
+							<table>
+								<tr>
+									<td><div id="qsObjectDCs_Title"></div></td>
+									<td>
+										<button type="button" class="btn btn-xs cta-button" data-toggle="modal" data-target=".bs-example-modal-lg"  style="float: right; margin-right: 10px;">
+											<span class="glyphicon glyphicon-resize-full" aria-hidden="true" ng-click="maFullScreen(DCsFullSize)"></span>
+										</button>
+
+				                        <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 10px;">
+				                            <button type="button" class="btn btn-default {{chartActive}} cta-button btn-xs" ng-click="Toggle('C')">
+				                                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+				                            </button>
+				                            <button type="button" class="btn btn-default {{tableActive}} cta-button btn-xs" ng-click="Toggle('T')">
+				                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+				                            </button>                      
+				                        </div> 										
+									</td>									
+								</tr>
+							</table>
+							
+						</div>
+						<div class="ma-body">
+							<div id="qsObjectDCs" style="height: 310px; margin-left: 10px; margin-right: 10px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0px;">
+				<div style="padding: 5px;">
+					<div class="ma-box">
+						<div class="ma-header">
+							<table>
+								<tr>
+									<td><div id="qsObjectTrend_Title"></div></td>
+									<td>
+										<button type="button" class="btn btn-xs cta-button" data-toggle="modal" data-target=".bs-example-modal-lg"  style="float: right; margin-right: 10px;">
+											<span class="glyphicon glyphicon-resize-full" aria-hidden="true" ng-click="maFullScreen(TrendFullSize)"></span>
+										</button>
+
+				                        <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 10px;">
+				                            <button type="button" class="btn btn-default {{chartActive}} cta-button btn-xs" ng-click="Toggle('C')">
+				                                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+				                            </button>
+				                            <button type="button" class="btn btn-default {{tableActive}} cta-button btn-xs" ng-click="Toggle('T')">
+				                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+				                            </button>                      
+				                        </div> 										
+
+				                        <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 10px;">
+				                            <button type="button" class="btn btn-default {{weekActive}} cta-button btn-xs" ng-click="Toggle('W')">
+				                                <div>Weekly</div>
+				                            </button>
+				                            <button type="button" class="btn btn-default {{monthActive}} cta-button btn-xs" ng-click="Toggle('M')">
+				                                <div>Monthly</div>
+				                            </button>                      
+				                        </div> 										
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="ma-body">
+							<div id="qsObjectTrend" style="height: 310px; margin-left: 10px; margin-right: 10px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>			
+		<!-- </div>	 -->
+	</div>
+
+	<!-- Large modal -->
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="qsObjectFullScreen_Title"></h4>
+				</div>
+				<div id="qsObjectFullScreen" style="height: 500px; margin: 10px;"></div>
+			</div>
+		</div>
 	</div>	
 </div>

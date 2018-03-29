@@ -24,12 +24,27 @@ app.service('chartService', function ($log) {
 
     this.getObject = function (objectsArray) {
         $log.info('getObject');
-        $log.info(objectsArray)
 
         angular.forEach(objectsArray, function (value) {
             app.qlikDoc.getObject(value.qsObjectID, value.qsObject);
         });
     };
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //This service generate one ID for each of the Objects. The service takes also takes as input the visualisation
+    //type "cahrt" or "table".
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+    this.getObjectAndText = function (objectsArray) {
+        $log.info('getObject');
+
+        angular.forEach(objectsArray, function (value) {
+            app.qlikDoc.getObject(value.qsObjectID, value.qsObject).then(function (model){
+                str = '#' + value.qsObjectID + '_Title';
+                $(str).text(model.layout.title);                
+            });
+        });
+    };    
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

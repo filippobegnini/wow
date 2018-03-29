@@ -17,13 +17,13 @@ var configfile = {
 			"port": 443,
 			"isSecure": window.location.protocol === "https:"
 		},
-		"appId": "a891ee43-1d82-403f-a7ba-23a48cb5f334"
+		"appId": "2cd981f5-d995-4e96-8aed-dccfa10e1e19"
 	}
 }
 
 
 //Set to development or production
-var config = configfile.development;
+var config = configfile.production;
 
 //////////////////////////////////////////////////////
 

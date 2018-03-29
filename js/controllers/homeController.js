@@ -1,5 +1,5 @@
 //********** home Controllers
-app.controller('homeController', function ($scope, $log, $rootScope, chartService, setUpService) {
+app.controller('homeController', function ($scope, $log, $rootScope, chartService, setUpService, $location) {
 	$log.info('home');
 
 	$(document).ready(function () {
@@ -14,10 +14,11 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		$("#toggleButtons").show();
 	});
 
+	$rootScope.summaryBreadCrub = false;	
+
 	$scope.$on('LastRepeaterElement', function () {
 		chartService.modelKPI($rootScope.arrayKPIs);
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
-		$log.info($rootScope.arrayObjects)
 		chartService.getObject($rootScope.arrayObjects);
 		chartService.coloursKPI($rootScope.arrayColoursKPI);
 	});
@@ -63,7 +64,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome112",
 					SubMetricPCPChange:"qsKPIhome112_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"11",
 				},
 				{
 					SubMetricTitle:"qsKPIhome120_Title",
@@ -81,7 +82,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome122",
 					SubMetricPCPChange:"qsKPIhome122_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"10",
 				},
 			],
 			boxClass:"boxSafety",
@@ -143,7 +144,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		          SubMetricObjPCP:"qsKPIhome222",
 		          SubMetricPCPChange:"qsKPIhome222_1",
 		          
-		          SubMetricClick:"5",
+		          SubMetricClick:"6",
 		        },
 		        {
 		          SubMetricTitle:"qsKPIhome230_Title",
@@ -161,7 +162,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		          SubMetricObjPCP:"qsKPIhome232",
 		          SubMetricPCPChange:"qsKPIhome232_1",
 		          
-		          SubMetricClick:"5",
+		          SubMetricClick:"7",
 		        },
 		        {
 		          SubMetricTitle:"qsKPIhome240_Title",
@@ -179,7 +180,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		          SubMetricObjPCP:"qsKPIhome242",
 		          SubMetricPCPChange:"qsKPIhome242_1",
 		          
-		          SubMetricClick:"5",
+		          SubMetricClick:"8",
 		        },
 		        {
 					SubMetricTitle:"qsKPIhome250_Title",
@@ -197,7 +198,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome252",
 					SubMetricPCPChange:"qsKPIhome252_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"9",
 		        },                      
 	      ],
 	    },	
@@ -222,7 +223,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 
 	      IMG:"IMG/IMGcost.png",
 	      Trend:"qsObjectHome300",
-	      MetricClick:"0",
+	      MetricClick:"2",
 			SubMetric:[
 		        {
 					SubMetricTitle:"qsKPIhome310_Title",
@@ -240,7 +241,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome312",
 					SubMetricPCPChange:"qsKPIhome312_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"12",
 		        },
 				{
 					SubMetricTitle:"qsKPIhome320_Title",
@@ -258,7 +259,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome322",
 					SubMetricPCPChange:"qsKPIhome322_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"13",
 				},
 				{
 					SubMetricTitle:"qsKPIhome330_Title",
@@ -276,69 +277,30 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 					SubMetricObjPCP:"qsKPIhome332",
 					SubMetricPCPChange:"qsKPIhome332_1",
 
-					SubMetricClick:"5",
+					SubMetricClick:"14",
 				},
 			],
 			boxClass:"boxService",
 		},									
 	];	
 
-	var prev = 'Brisbane RDC';
-	 app.qlikDoc.createList({
-		"qDef": {
-			"qFieldDefs": [
-				"DC_Name"
-			]
-		},
-		"qInitialDataFetch": [{
-			qTop: 0,
-			qLeft: 0,
-			qHeight: 100,
-			qWidth: 1
-		}]
-	}, function (reply) {
-		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 0) {
-			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true);
-		};
-		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 2) {
-			 app.qlikDoc.field('DC_Name').selectValues([prev], true, true)
-		};
-		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected == 1) {
-			angular.forEach(reply.qListObject.qDataPages["0"].qMatrix, function (value) {
-				if (value["0"].qState == 'S') {
-					prev = value["0"].qText;
-				};
-			});
-		};
-		if (reply.qListObject.qDimensionInfo.qStateCounts.qSelected > 2) {
-			 app.qlikDoc.field('DC_Name').clear();
-		};
-	});
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	$rootScope.HomePopUpCharts = [
-		{ ChartID: "qsObjectHomePopUpDC", ChartDropDown: "hidden", CustomLegend: "hidden", id: "" },
-		{ ChartID: "qsObjectHomePopUpMonthly", ChartDropDown: "hidden", CustomLegend: "hidden", id: "" },
-		{ ChartID: "qsObjectHomePopUpWeekly", ChartDropDown: "hidden", CustomLegend: "hidden", id: "" },
-		{ ChartID: "qsObjectHomePopUpDrivers", ChartDropDown: "show", CustomLegend: "show", id: "DW00" },
-	];
-
-	$("#sidebarCollapse").click(function () {
-		chartService.resize();
-	});
-	
-	//End
 
 	//This function show and hide the detail kpi section
 	$rootScope.showDetailKPI = function() {
 		$scope.L3kpi = $scope.L3kpi ? false : true;
+		chartService.modelKPI($rootScope.arrayKPIsBis);
 	};
 
 	$rootScope.goToKRA = function(id) {
 		$rootScope.kraID = id;
-	};
+		$location.path('kra');
+	};	
+
+	$rootScope.goToMetricAnalysis = function(id) {
+		$rootScope.selectInField('MeasureID',id);
+		$location.path('metricanalysis');
+	}	
 });
 //********** End Summary Controllers
 

@@ -49,7 +49,7 @@ body {
     background-color: #f6f4f3; 
     color: #58585a;   
     letter-spacing: 1px;
-    /*overflow: auto; */
+    overflow: auto; 
 }   
 
 div.qvobject, div.qvplaceholder {
@@ -96,6 +96,10 @@ div.qvobject, div.qvplaceholder {
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     background-color: #00000040;
     color: #FFFFFF; 
+}
+
+.breadcrumb a, .breadcrumb a:hover, .breadcrumb a:focus {
+    color: #58585a;
 }
 /*End Overwrite Bootstrap CSS*/
 
@@ -272,6 +276,25 @@ div.qvobject, div.qvplaceholder {
     border-color: #29558e;
 }
 
+.btn-group>.cta-button{
+    color: #5480b9;
+    background-color: #FFFFFF;
+    border-color: #5480b9;
+}
+
+/*.btn-group>.cta-button:hover{
+.cta-button:focus, .cta-button:active, .cta-button.active, .open>.dropdown-toggle.cta-button {
+    color: #5480b9;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+}*/
+
+.btn-group>.cta-button:active, .btn-group>.cta-button.active{
+    color: #FFFFFF;
+    background-color: #5480b9;
+    border-color: #5480b9;
+}
+
 .dc-label{
     padding-right: 20px;
 }
@@ -378,6 +401,8 @@ div.qvobject, div.qvplaceholder {
     text-align: right;
     padding-bottom: 5px;
     line-height: 60px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .L3-kpi-table{
@@ -498,6 +523,8 @@ h2 {
 	text-align: center;
 	margin: auto;
 	color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* ---------------------------------------------------
@@ -532,7 +559,18 @@ h2 {
 .kra-box-body{
 	text-align: right;
 	background-color: #FFFFFF;
-    border-radius: 10px;   	
+    border-radius: 10px;  
+    font-weight: bold; 	
+}
+
+.krs-metric-title {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #d31145; 
+    width: 60%; 
+    color: #FFFFFF; 
+    padding-left: 20px; 
+    height: 115px;
 }
 
 /* ---------------------------------------------------
@@ -605,3 +643,30 @@ h2 {
 	height: 250px;
 	margin-right: 50px;
 }
+
+/*-------------------*/
+/*Metric Analysis CSS*/
+/*-------------------*/
+
+.ma-box{
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #58585A;
+    border-radius: 10px;
+    padding: 0px;
+}
+
+.ma-header{
+    background-color: #58585A;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.ma-body{
+    height: 350px;
+    margin-top: 20px;
+}
+/*-------------------*/
+/*Metric Analysis CSS*/
+/*-------------------*/
