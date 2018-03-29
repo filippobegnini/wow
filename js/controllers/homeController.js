@@ -44,7 +44,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	      MetricPCPChange:"qsKPIhome102_1",
 	      MetricPCPVis:"qsObjectHome102",
 
-	      IMG:"IMG/IMGcost.png",
+	      IMG:"IMG/IMGsafety.png",
 	      Trend:"qsObjectHome100",
 	      MetricClick:"0",
 			SubMetric:[
@@ -221,7 +221,7 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	      MetricPCPChange:"qsKPIhome302_1",
 	      MetricPCPVis:"qsObjectHome302",
 
-	      IMG:"IMG/IMGcost.png",
+	      IMG:"IMG/IMGservice.png",
 	      Trend:"qsObjectHome300",
 	      MetricClick:"2",
 			SubMetric:[
