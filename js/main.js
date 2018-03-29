@@ -8,7 +8,7 @@ var configfile = {
 			"port": 443,
 			"isSecure": window.location.protocol === "https:"
 		},
-		"appId": "cc95c674-d119-432d-81fc-03f9ea67e5d4"
+		"appId": "2b4c7023-f94e-4f4d-953b-7afce48ac737"
 	},
 	"production": {
 		"qlikConfig": {
@@ -44,6 +44,8 @@ require.config({
 		'chartService': scriptsUrl + 'js/services/chartService',
 		'setUpService': scriptsUrl + 'js/services/setUpService',
 		'dropdownDirective': scriptsUrl + 'js/directives/dropdown/dropdown.directive',
+		'filterDirective': scriptsUrl + 'js/directives/filter/filter.directive',
+		'senseObject': scriptsUrl + 'js/directives/sense-object/sense-object.directive',
 		'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',
 	}
 });
@@ -100,6 +102,8 @@ define([
 		'kra',	
 		'metricanalysis',
 		'dropdownDirective',
+		'filterDirective',
+		'senseObject',
 		'emitLastRepeaterElement'
 	], function (qlik) {
 

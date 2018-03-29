@@ -1,58 +1,29 @@
 <div class="container-fluid">
-	<!-- 	<div class="alert alert-danger alert-dismissible" role="alert" style="display:none">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-			<span id="errmsg"></span>
-		</div> -->
-		<!--<div id="qs-selections" style="width: 100%; height: 40px;"></div>-->
 		<div class="row">
-			<div class="col-xs-12 col-md-2">
-				<div ng-repeat="list in Leve3Cathegory">
-					<div class="row">
-						<div class="col-xs-12" ng-repeat="lista in list.Line">
-							<drop-down dropdownlist="lista.qsListField" dropdownid="lista.id" dropdownlabel="lista.Title" dropdownclass="lista.Class" dropdownfieldselect="lista.qsFileldSelect"></drop-down>	
-						</div>
-					</div>
+			<div class="col-xs-12 col-md-2 driver-filters">
+				<div class="filter-count">
+					<b>Metrics selected:</b> {{totalDriversSelected || 0}} out of 5
 				</div>
+				<drop-down ng-repeat="metric in Level3Category" dropdownlist="metric.qsListField" dropdownid="metric.id" dropdownlabel="metric.Title" dropdownclass="metric.Class" dropdownfieldselect="metric.qsFileldSelect"></drop-down>
+
+				<button type="button" class="btn dropdown-toggle btn-reset-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="resetFilters()">Reset All</button>
 			</div>
-			<div class="col-xs-12 col-md-10" style="background-color: #FFFFFF;">
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
-						<div ng-repeat="legend1 in qsObjectDetailsChartPercLegend">
-							<span style="color: {{legend1.coloring.baseColor.color}}">{{legend1.series.markerNew}}</span>&nbsp;{{legend1.qFallbackTitle}}&nbsp;&nbsp;
-						</div>
-					</div>	
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-						<div id="qsObjectDetailsChartPerc" class="DetailChart"></div>
-					</div>								
+			<div class="col-xs-12 col-md-10 driver-comparison" ng-class="{'active': totalDriversSelected > 0}">
+				<div class="btn-group display-toggle" role="group" ng-if="totalDriversSelected > 0">
+				  <button type="button" title="Switch to chart view" class="btn btn-default" ng-click="setDisplay('chart')" ng-class="{'active': displayMode == 'chart'}"><i class="fa fa-line-chart"></i></button>
+				  <button type="button" title="Switch to table view" class="btn btn-default" ng-click="setDisplay('table')" ng-class="{'active': displayMode == 'table'}"><i class="fa fa-table"></i></button>
 				</div>
-	
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
-						<div ng-repeat="legend2 in qsObjectDetailsChartNumLegend">
-							<span style="color: {{legend2.coloring.baseColor.color}}">{{legend2.series.markerNew}}</span>&nbsp;{{legend2.qFallbackTitle}}&nbsp;&nbsp;
-						</div>
-					</div>	
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-						<div id="qsObjectDetailsChartNum" class="DetailChart"></div>
+				<div class="vis-type chart-view" ng-if="displayMode == 'chart'">
+					<sense-object ng-show="$index < totalDriversSelected" data-ng-repeat="driverObject in driverObjects.charts" id="{{ 'qs-driver-' + $index }}" object-id="driverObject" style="height: 250px;"></sense-object>
+
+					<div class="message" ng-if="!totalDriversSelected || totalDriversSelected === 0">
+						<i class='fa fa-line-chart'></i>
+						Please select up to 5 drivers to compare
 					</div>
 				</div>
-	
-				<div class="row">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 legends">
-						<div ng-repeat="legend3 in qsObjectDetailsChartBigNumLegend">
-							<span style="color: {{legend3.coloring.baseColor.color}}">{{legend3.series.markerNew}}</span>&nbsp;{{legend3.qFallbackTitle}}&nbsp;&nbsp;
-						</div>
-					</div>	
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-						<div id="qsObjectDetailsChartBigNum" class="DetailChart"></div>
-					</div>	
+				<div class="vis-type table-view" ng-if="displayMode == 'table'">
+					<sense-object id="qs-driver-table" object-id="driverObjects.table" style="height: 500px;"></sense-object>
 				</div>
 			</div>
 		</div>
-	
-		<!--<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-12 col-lg-12" style="margin-top: 10px;">
-				<div id="qsObjectDetailsTable" style="height: 400px; background-color: #FFFFFF; padding-left: 20px; padding-right: 20px;"></div>
-			</div>
-		</div>-->
 	</div>

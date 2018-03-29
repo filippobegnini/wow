@@ -206,7 +206,7 @@ div.qvobject, div.qvplaceholder {
 }
 
 .dropdown-content {
-    width: 100%;
+    min-width: 320px;
     overflow: auto;
     max-height: 200px;
 }
@@ -216,6 +216,21 @@ div.qvobject, div.qvplaceholder {
     padding: 5px;
     text-decoration: none;
     display: block;
+}
+
+.btn-reset-filters {
+    width: 100%;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-reset-filters:hover,
+.btn-reset-filters:active,
+.btn-reset-filters:focus {
+    color: white;
+    background-color: #193b68;
 }
 
 .customDropdown a:hover {background-color: #ddd}
@@ -577,6 +592,7 @@ h2 {
     DETAILS
 ----------------------------------------------------- */
 .L3Box{
+    position: relative;
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
@@ -625,4 +641,82 @@ h2 {
 .DetailChart{
 	height: 250px;
 	margin-right: 50px;
+}
+
+.qs-object {
+    width: 100%;
+}
+
+.driver-filters .filter-count {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+    
+.driver-comparison {
+    background-color: white; 
+    min-height: 510px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.driver-comparison.active {
+    justify-content: baseline;
+    align-items: flex-end;
+    padding-top: 10px;
+}
+
+.driver-comparison .message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.driver-comparison .message i {
+    color: #c3c3c3;
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.driver-comparison .vis-type {
+    width: 100%;
+}
+
+.driver-comparison .display-toggle .btn.active {
+    background-color: #337ab7;
+    color: white;
+}
+
+.driver-comparison .display-toggle .btn.active,
+.driver-comparison .display-toggle .btn:active,
+.driver-comparison .display-toggle .btn:hover,
+.driver-comparison .display-toggle .btn:focus {
+    outline: none;
+}
+
+.filter-select {
+    display: flex;
+    align-items: center;
+}
+
+.filter-select .filter-label {
+    margin-right: 10px;
+}
+
+.filter-select .btn-filter-clear {
+    font-size: 1.5em;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.filter-select button,
+.filter-select button:hover,
+.filter-select button:active,
+.filter-select button:focus {
+    background-color: #337ab7;
+    color: white;
 }

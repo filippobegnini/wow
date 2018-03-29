@@ -219,50 +219,7 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 // ------------------------------Inventory Turns
 		{qsObjectID:'qsKPIhome000Class',		qsObject:'c3dc74b7-55f4-4fec-be25-86062baaf12e'},			
 	];
-	/////////////////////
-	//---KPIs
-	/////////////////////	
 
-	/////////////////////
-	//---List
-	/////////////////////
-		$rootScope.arrayList = [
-			{qsListID:'driverSelector',		qsListField:'DRIVERS_MeasureName'},
-		];
-
-	/////////////////////
-	//---List
-	/////////////////////
-
-	// /////////////////////
-	// //---Legend
-	// /////////////////////
-	// 	$rootScope.arrayLegend = [
-	// 		{qsObjectID:'qsObjectHomePopUpPercLegend',		qsObject:'sGepUe'},	
-	// 		{qsObjectID:'qsObjectHomePopUpNumLegend',		qsObject:'kDcPaSy'},		
-	// 		{qsObjectID:'qsObjectHomePopUpBigNumLegend',	qsObject:'degaqC'},		
-	// 		// {qsObjectID:'qsObjectDetailsChartLegend',		qsObject:'kpuXx'},			
-	// 	];
-	// /////////////////////
-	// //---Legend
-	/////////////////////	
-
-
-	
-	/*Custom code from dropdown*/
-	/* When the user clicks on the button, 
-	toggle between hiding and showing the dropdown content */
-	$rootScope.driverDropdown = 'Select Measure'
-	$rootScope.dropDownDetailsArray = [
-		{id:'DW01'},
-		{id:'DW02'},
-		{id:'DW03'},
-		{id:'DW04'},
-		{id:'DW05'},
-		{id:'DW06'},
-		{id:'DW07'},
-		{id:'DW08'},
-	];
 	$rootScope.dropDownFunction =  function(action, id) {	
 		$log.info('dropDownFunction');
 		str = '#' + id;
@@ -293,10 +250,6 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 	chartService.setStringValue('vDimPeriod','FCY');
 	chartService.setStringValue('vDimPeriodName','FIN_MONTH');
 
-	$rootScope.selectInField = function(field, value) {
-		chartService.selectValues(field, value);	
-	};
-
 	$rootScope.TogglePeriod =function (id) {
 		servicesLibrary.setStringValue('vDimPeriod',id);
 
@@ -324,4 +277,9 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 });
 //********** End Summary Controllers
 
-
+app.constant('qlikRegister', {
+	drivers: {
+		charts: ['dpr', 'GYSgvYx', 'pPuCpt', 'pmpPjUP', 'pGcjJw'],
+		table: 'hvpJeRp'
+	}
+}); 

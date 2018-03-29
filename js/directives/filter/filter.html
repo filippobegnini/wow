@@ -1,0 +1,14 @@
+<div class="filter-select" data-ng-show="fieldValues">
+    <div class="filter-label" data-ng-if="label">{{label}}</div>
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{selected || defaultSelection}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-content">
+            <li ng-repeat="fieldValue in fieldValues" ng-class="{'active': fieldValue[0].qState === 'S'}">
+                <a ng-click="selectField($event, fieldValue[0].qText)">{{fieldValue[0].qText}}</a>
+            </li>
+        </ul>
+    </div>
+    <i class="fa fa-times-circle btn-filter-clear" data-ng-if="selected" data-ng-click="clear()"></i>
+</div>

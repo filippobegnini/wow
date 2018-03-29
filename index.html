@@ -17,17 +17,18 @@
         <!-- Bootstrap core CSS -->
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css\styles-custom.css">
         <!--     <link rel="stylesheet" href="CSS\bootstrap-slider.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css" />  -->   
     </head>
 
-    <body role="document" >
+    <body role="document">
         <div class="">  
             <div class="home-top-banner">
                 <span><img src="IMG/LOGO.svg" class="home-top-banner-img"></span>
                 <span class="home-top-banner-text">Supply Chain Heart Beat</span>
-            </div >
+            </div>
 
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -61,13 +62,8 @@
 
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <span class="dc-label">Distribution Centre</span>
-                    <span>
-                        <button type="button" class="btn btn-default cta-button" ng-click="">
-                            <span id="qsKPIhomeDClabel_0"></span>
-                            <span>V</span>
-                        </button>
-                    </span>
+                    <filter-select field-name="DC_Name" label="Distribution Centre"></filter-select>
+                    
                     <div style="height: 0px; width: 0px;" id="qsKPIhomeDClabel"></div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

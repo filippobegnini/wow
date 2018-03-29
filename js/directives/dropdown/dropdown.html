@@ -1,10 +1,10 @@
 <div class="{{dropdownclass}}">
-    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <div>{{dropdownlabel}}</div> <div><span>({{totalSelected}})</span> <span class="caret"></span></div>
-    </button>
-    <ul id="{{dropdownid}}" class="dropdown-menu dropdown-content" ng-class="{'active': totalSelected > 0}">
-      <li ng-repeat="listItem in ABC">
-          <a class="{{listItem[0].qState}}" ng-click="selectInFieldDD($event, listItem[0].qText)">{{listItem[0].qText}}</a>
-      </li>
-    </ul>
-  </div>
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div>{{dropdownlabel}}</div> <div><span>({{totalSelected}})</span> <span class="caret"></span></div>
+        </button>
+        <ul id="{{dropdownid}}" class="dropdown-menu dropdown-content" ng-class="{'active': totalSelected > 0}">
+            <li ng-repeat="listItem in ABC">
+                <a class="{{listItem[0].qState}}" ng-click="selectInFieldDD($event, listItem[0].qText)">{{listItem[0].qText}}</a>
+            </li>
+        </ul>
+    </div>

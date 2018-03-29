@@ -1,4 +1,3 @@
-//********** emitLastRepeaterElement
 app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
 	$log.info('dropDown');
     return {
@@ -11,15 +10,11 @@ app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
         	dropdownfieldselect: '='
         },
         templateUrl: 'js/directives/dropdown/dropdown.html',
-        controller: function($scope, $rootScope){
+        controller: function($scope, chartService){
 			
 			$scope.selectInFieldDD = function(e, id){
-				e.stopPropagation()
-				$rootScope.selectInField($scope.dropdownfieldselect, id);
-			};
-
-			$scope.dropDownFunctionProva = function(b) {
-				$rootScope.dropDownFunction('toggle', b);
+				e.stopPropagation();
+				chartService.selectValues($scope.dropdownfieldselect, id);
 			};
 			
 			app.qlikDoc.createList({
@@ -44,6 +39,3 @@ app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
         }
     };
 }]);
-
-
-//********** End emitLastRepeaterElement
