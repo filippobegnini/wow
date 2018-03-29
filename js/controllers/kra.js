@@ -1,5 +1,5 @@
 //********** home Controllers
-app.controller( 'kraCtrl', function($scope, $rootScope, chartService) {		
+app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location) {		
 	console.log('kra');
 
 	$scope.$on('LastRepeaterElement', function(){
@@ -9,11 +9,19 @@ app.controller( 'kraCtrl', function($scope, $rootScope, chartService) {
 		chartService.coloursKPI($rootScope.arrayColoursKPI);		
 	});		
 
+	$rootScope.summaryBreadCrub = true;
+	$rootScope.breadcrumb = [
+		{show:true, value:"KRA[kraID].MetricLabel"},
+		{show:false, value:""},
+	];	
+
+	chartService.clear('MeasureID');
+
 
 $rootScope.KRA = [
 		{
 			MetricTitle:"qsKPIkra100_SubTitle",
-			MetricLabel:"qsKPIkra100_0Title",
+			MetricLabel:"qsKPIkra100_Title",
 			Metric:"qsKPIkra100_0",
 			MetricClass:"qsKPIkra100Class_1",	
 			MetricClassObj:"qsKPIkra100Class",		
@@ -31,32 +39,40 @@ $rootScope.KRA = [
 			Trend:"qsObjectKRA100",
 			SubMetric:[
 				{
-					SubMetricTitle:"qsKPIhome110_Title",
-					SubMetricLabel:"qsKPIhome110_0Title",
-					SubMetric:"qsKPIhome110_0", 
-					SubMetricClass:"qsKPIhome110Class_1",			
-					SubMetricObj:"qsKPIhome110",
-					SubMetricClassObj:"qsKPIhome110Class",
-					SubMetricCompareLabel:"qsKPIhome111_0Title",
-					SubMetricCompare:"qsKPIhome111_0",
-					SubMetricObjCompare:"qsKPIhome111",
-					SubMetricDeltaLabel:"qsKPIhome111_1Title",
-					SubMetricDelta:"qsKPIhome111_1",						
-					SubMetricClick:"11"
+					SubMetricTitle:"qsKPIkra110_Title",
+					SubMetric:"qsKPIkra110_0", 
+					SubMetricObj:"qsKPIkra110",
+					SubMetricTrend:"qsObjectKRA110",
+					SubMetricTargetClass:"qsKPIhome110Class_1",
+					SubMetricTargetClassObj:"qsKPIhome110Class",					
+
+					SubMetricTarget:"qsKPIkra111_0",
+					SubMetricObjTarget:"qsKPIkra111",
+					SubMetricTargetChange:"qsKPIkra111_1",
+
+					SubMetricPCP:"qsKPIkra112_0",
+					SubMetricObjPCP:"qsKPIkra112",
+					SubMetricPCPChange:"qsKPIkra112_1",
+					
+					SubMetricClick:"11",
 				},
 				{
-					SubMetricTitle:"qsKPIhome120_Title",
-					SubMetricLabel:"qsKPIhome120_0Title",
-					SubMetric:"qsKPIhome120_0", 
-					SubMetricClass:"qsKPIhome120Class_1",			
-					SubMetricObj:"qsKPIhome120",
-					SubMetricClassObj:"qsKPIhome120Class",
-					SubMetricCompareLabel:"qsKPIhome121_0Title",
-					SubMetricCompare:"qsKPIhome121_0",
-					SubMetricObjCompare:"qsKPIhome121",
-					SubMetricDeltaLabel:"qsKPIhome121_1Title",
-					SubMetricDelta:"qsKPIhome121_1",						
-					SubMetricClick:"38"
+					SubMetricTitle:"qsKPIkra120_Title",
+					SubMetric:"qsKPIkra120_0", 
+					SubMetricObj:"qsKPIkra120",
+					SubMetricTrend:"qsObjectKRA120",
+					SubMetricTargetClass:"qsKPIhome120Class_1",
+					SubMetricTargetClassObj:"qsKPIhome120Class",					
+
+					SubMetricTarget:"qsKPIkra121_0",
+					SubMetricObjTarget:"qsKPIkra121",
+					SubMetricTargetChange:"qsKPIkra121_1",
+
+					SubMetricPCP:"qsKPIkra122_0",
+					SubMetricObjPCP:"qsKPIkra122",
+					SubMetricPCPChange:"qsKPIkra122_1",
+					
+					SubMetricClick:"10",
 				},
 			],
 			boxClass:"boxSafety",
@@ -64,7 +80,7 @@ $rootScope.KRA = [
 		{
 			Title:"qsKPIkra200_Title",			
 			MetricTitle:"qsKPIkra200_SubTitle",
-			MetricLabel:"qsKPIkra200_0Title",
+			MetricLabel:"qsKPIkra200_Title",
 			Metric:"qsKPIkra200_0",
 			MetricClass:"qsKPIhome200Class_1",	
 			MetricClassObj:"qsKPIhome200Class",		
@@ -80,6 +96,7 @@ $rootScope.KRA = [
 
 			IMG:"IMG/IMGcost.png",
 			Trend:"qsObjectKRA200",
+			MetricClick:"",
 			SubMetric:[
 				{
 					SubMetricTitle:"qsKPIkra210_Title",
@@ -115,7 +132,7 @@ $rootScope.KRA = [
 					SubMetricObjPCP:"qsKPIkra222",
 					SubMetricPCPChange:"qsKPIkra222_1",
 					
-					SubMetricClick:"5",
+					SubMetricClick:"6",
 				},
 				{
 					SubMetricTitle:"qsKPIkra230_Title",
@@ -133,7 +150,7 @@ $rootScope.KRA = [
 					SubMetricObjPCP:"qsKPIkra232",
 					SubMetricPCPChange:"qsKPIkra232_1",
 					
-					SubMetricClick:"5",
+					SubMetricClick:"7",
 				},
 				{
 					SubMetricTitle:"qsKPIkra240_Title",
@@ -151,7 +168,7 @@ $rootScope.KRA = [
 					SubMetricObjPCP:"qsKPIkra242",
 					SubMetricPCPChange:"qsKPIkra242_1",
 					
-					SubMetricClick:"5",
+					SubMetricClick:"8",
 				},
 				{
 					SubMetricTitle:"qsKPIkra250_Title",
@@ -169,13 +186,13 @@ $rootScope.KRA = [
 					SubMetricObjPCP:"qsKPIkra252",
 					SubMetricPCPChange:"qsKPIkra252_1",
 					
-					SubMetricClick:"5",
+					SubMetricClick:"9",
 				},											
 			],
 		},	
 		{
 			MetricTitle:"qsKPIkra300_SubTitle",
-			MetricLabel:"qsKPIkra300_0Title",
+			MetricLabel:"qsKPIkra300_Title",
 			Metric:"qsKPIkra300_0",
 			MetricClass:"qsKPIkra300Class_1",	
 			MetricClassObj:"qsKPIkra300Class",		
@@ -190,48 +207,61 @@ $rootScope.KRA = [
 			MetricPCPChange:"qsKPIkra302_1",
 
 			IMG:"IMG/IMGservice.png",
+			Trend:"qsObjectKRA300",
 			SubMetric:[
 				{
 					SubMetricTitle:"qsKPIkra310_Title",
-					SubMetricLabel:"qsKPIkra310_0Title",
 					SubMetric:"qsKPIkra310_0", 
-					SubMetricClass:"qsKPIkra310Class_1",			
 					SubMetricObj:"qsKPIkra310",
-					SubMetricClassObj:"qsKPIkra310Class",
-					SubMetricCompareLabel:"qsKPIkra311_0Title",
-					SubMetricCompare:"qsKPIkra311_0",
-					SubMetricObjCompare:"qsKPIkra311",
-					SubMetricDeltaLabel:"qsKPIkra311_1Title",
-					SubMetricDelta:"qsKPIkra311_1",						
-					SubMetricClick:"12"
+					SubMetricTrend:"qsObjectKRA310",
+					SubMetricTargetClass:"qsKPIhome310Class_1",
+					SubMetricTargetClassObj:"qsKPIhome310Class",					
+
+					SubMetricTarget:"qsKPIkra311_0",
+					SubMetricObjTarget:"qsKPIkra311",
+					SubMetricTargetChange:"qsKPIkra311_1",
+
+					SubMetricPCP:"qsKPIkra312_0",
+					SubMetricObjPCP:"qsKPIkra312",
+					SubMetricPCPChange:"qsKPIkra312_1",
+					
+					SubMetricClick:"12",
 				},
 				{
 					SubMetricTitle:"qsKPIkra320_Title",
-					SubMetricLabel:"qsKPIkra320_0Title",
 					SubMetric:"qsKPIkra320_0", 
-					SubMetricClass:"qsKPIkra320Class_1",			
 					SubMetricObj:"qsKPIkra320",
-					SubMetricClassObj:"qsKPIkra320Class",
-					SubMetricCompareLabel:"qsKPIkra321_0Title",
-					SubMetricCompare:"qsKPIkra321_0",
-					SubMetricObjCompare:"qsKPIkra321",
-					SubMetricDeltaLabel:"qsKPIkra321_1Title",
-					SubMetricDelta:"qsKPIkra321_1",						
-					SubMetricClick:"13"
+					SubMetricTrend:"qsObjectKRA320",
+					SubMetricTargetClass:"qsKPIhome320Class_1",
+					SubMetricTargetClassObj:"qsKPIhome320Class",					
+
+					SubMetricTarget:"qsKPIkra321_0",
+					SubMetricObjTarget:"qsKPIkra321",
+					SubMetricTargetChange:"qsKPIkra321_1",
+
+					SubMetricPCP:"qsKPIkra322_0",
+					SubMetricObjPCP:"qsKPIkra322",
+					SubMetricPCPChange:"qsKPIkra322_1",
+					
+					SubMetricClick:"13",
 				},
 				{
 					SubMetricTitle:"qsKPIkra330_Title",
-					SubMetricLabel:"qsKPIkra330_0Title",
 					SubMetric:"qsKPIkra330_0", 
-					SubMetricClass:"qsKPIkra330Class_1",			
 					SubMetricObj:"qsKPIkra330",
-					SubMetricClassObj:"qsKPIkra330Class",
-					SubMetricCompareLabel:"qsKPIkra331_0Title",
-					SubMetricCompare:"qsKPIkra331_0",
-					SubMetricObjCompare:"qsKPIkra331",					
-					SubMetricDeltaLabel:"qsKPIkra331_1Title",
-					SubMetricDelta:"qsKPIkra331_1",						
-					SubMetricClick:"14"
+					SubMetricTrend:"qsObjectKRA330",
+					SubMetricTargetClass:"qsKPIhome330Class_1",
+					SubMetricTargetClassObj:"qsKPIhome330Class",					
+
+					SubMetricTarget:"qsKPIkra331_0",
+					SubMetricObjTarget:"qsKPIkra331",
+					SubMetricTargetChange:"qsKPIkra331_1",
+
+					SubMetricPCP:"qsKPIkra332_0",
+					SubMetricObjPCP:"qsKPIkra332",
+					SubMetricPCPChange:"qsKPIkra332_1",
+					
+					SubMetricClick:"14",
 				},
 			],
 			boxClass:"boxService",

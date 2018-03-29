@@ -60,6 +60,16 @@
                     </div>
             </nav> 
 
+            <div class="row" ng-show="summaryBreadCrub">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ol class="breadcrumb" style="padding: 0px;">
+                        <li><a href="#">Summary</a></li>
+                        <li ng-show="breadcrumb[0].show"><a href="#/kra" id="{{KRA[kraID].MetricLabel}}"></a></li>
+                        <li ng-show="breadcrumb[1].show" id="{{breadcrumb[1].value}}"></li>
+                    </ol>                    
+                </div>
+            </div>            
+
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <filter-select field-name="DC_Name" label="Distribution Centre"></filter-select>
@@ -70,13 +80,13 @@
                     <span>   
                         <button type="button" class="btn btn-default" disabled="disabled" style="float: right;">Comments</button>                        
                         <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 20px;">
-                            <button type="button" class="btn btn-default" ng-click="TogglePeriod('CW')">
+                            <button type="button" class="btn btn-default {{CWactive}} cta-button" ng-click="TogglePeriod('CW')">
                                 <div class="hidden-md hidden-sm hidden-xs">Current Week</div><div class="hidden-lg">WK</div>
                             </button>
-                            <button type="button" class="btn btn-default" ng-click="TogglePeriod('CM')">
+                            <button type="button" class="btn btn-default {{CMactive}} cta-button" ng-click="TogglePeriod('CM')">
                                 <div class="hidden-md hidden-sm hidden-xs">Current Month</div><div class="hidden-lg">MTH</div>
                             </button>
-                            <button type="button" class="btn btn-default active" ng-click="TogglePeriod('FCY')">
+                            <button type="button" class="btn btn-default {{FCYactive}} cta-button" ng-click="TogglePeriod('FCY')">
                                 <div class="hidden-md hidden-sm hidden-xs">Year to Date</div><div class="hidden-lg">YTD</div>
                             </button>                       
                         </div>                                 
