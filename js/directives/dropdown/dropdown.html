@@ -4,7 +4,7 @@
         </button>
         <ul id="{{dropdownid}}" class="dropdown-menu dropdown-content" ng-class="{'active': totalSelected > 0}">
             <li ng-repeat="listItem in ABC">
-                <a class="{{listItem[0].qState}}" ng-click="selectInFieldDD($event, listItem[0].qText)">{{listItem[0].qText}}</a>
+                <a class="{{listItem[0].qState}}" ng-click="selectInFieldDD($event, listItem[0])">{{listItem[0].qText}}</a>
             </li>
         </ul>
     </div>

@@ -759,7 +759,17 @@ h2 {
     background-color: #337ab7;
     color: white;
 }
-=======
+
+.toast-notification {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 50;
+    text-align: center;
+}
+
 /*-------------------*/
 /*Metric Analysis CSS*/
 /*-------------------*/
@@ -786,4 +796,4 @@ h2 {
 /*-------------------*/
 /*Metric Analysis CSS*/
 /*-------------------*/
->>>>>>> filo
+

@@ -37,6 +37,7 @@ var scriptsUrl = window.location.protocol + "//" +  window.location.host + "/ext
 require.config({
 	baseUrl: baseUrl + "resources",
 	paths: {
+		'mainController': scriptsUrl + 'js/controllers/mainController',
 		'homeController': scriptsUrl + 'js/controllers/homeController',
 		'detailsController': scriptsUrl + 'js/controllers/detailsController',
 		'kra': scriptsUrl + 'js/controllers/kra',
@@ -46,6 +47,8 @@ require.config({
 		'dropdownDirective': scriptsUrl + 'js/directives/dropdown/dropdown.directive',
 		'filterDirective': scriptsUrl + 'js/directives/filter/filter.directive',
 		'senseObject': scriptsUrl + 'js/directives/sense-object/sense-object.directive',
+		'toastComponent': scriptsUrl + 'js/components/toast/toast.component',
+		'constants': scriptsUrl + 'js/constants',
 		'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',
 	}
 });
@@ -95,8 +98,10 @@ define([
 
 	require([
 		'js/qlik',
+		'constants',
 		'chartService',
 		'setUpService',
+		'mainController',
 		'homeController',
 		'detailsController',
 		'kra',	
@@ -104,6 +109,7 @@ define([
 		'dropdownDirective',
 		'filterDirective',
 		'senseObject',
+		'toastComponent',
 		'emitLastRepeaterElement'
 	], function (qlik) {
 

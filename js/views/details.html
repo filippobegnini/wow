@@ -1,29 +1,29 @@
 <div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-12 col-md-2 driver-filters">
-				<div class="filter-count">
-					<b>Metrics selected:</b> {{totalDriversSelected || 0}} out of 5
-				</div>
-				<drop-down ng-repeat="metric in Level3Category" dropdownlist="metric.qsListField" dropdownid="metric.id" dropdownlabel="metric.Title" dropdownclass="metric.Class" dropdownfieldselect="metric.qsFileldSelect"></drop-down>
-
-				<button type="button" class="btn dropdown-toggle btn-reset-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="resetFilters()">Reset All</button>
+	<div class="row">
+		<div class="col-xs-12 col-md-2 driver-filters">
+			<div class="filter-count">
+				<b>Metrics selected:</b> {{totalDriversSelected || 0}} out of {{metricCompareLimit}}
 			</div>
-			<div class="col-xs-12 col-md-10 driver-comparison" ng-class="{'active': totalDriversSelected > 0}">
-				<div class="btn-group display-toggle" role="group" ng-if="totalDriversSelected > 0">
-				  <button type="button" title="Switch to chart view" class="btn btn-default" ng-click="setDisplay('chart')" ng-class="{'active': displayMode == 'chart'}"><i class="fa fa-line-chart"></i></button>
-				  <button type="button" title="Switch to table view" class="btn btn-default" ng-click="setDisplay('table')" ng-class="{'active': displayMode == 'table'}"><i class="fa fa-table"></i></button>
-				</div>
-				<div class="vis-type chart-view" ng-if="displayMode == 'chart'">
-					<sense-object ng-show="$index < totalDriversSelected" data-ng-repeat="driverObject in driverObjects.charts" id="{{ 'qs-driver-' + $index }}" object-id="driverObject" style="height: 250px;"></sense-object>
+			<drop-down ng-repeat="metric in Level3Category" dropdownlist="metric.qsListField" dropdownid="metric.id" dropdownlabel="metric.Title" dropdownclass="metric.Class" dropdownfieldselect="metric.qsFileldSelect"></drop-down>
 
-					<div class="message" ng-if="!totalDriversSelected || totalDriversSelected === 0">
-						<i class='fa fa-line-chart'></i>
-						Please select up to 5 drivers to compare
-					</div>
+			<button type="button" class="btn dropdown-toggle btn-reset-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="resetFilters()">Reset All</button>
+		</div>
+		<div class="col-xs-12 col-md-10 driver-comparison" ng-class="{'active': totalDriversSelected > 0}">
+			<div class="btn-group display-toggle" role="group" ng-if="totalDriversSelected > 0">
+				<button type="button" title="Switch to chart view" class="btn btn-default" ng-click="setDisplay('chart')" ng-class="{'active': displayMode == 'chart'}"><i class="fa fa-line-chart"></i></button>
+				<button type="button" title="Switch to table view" class="btn btn-default" ng-click="setDisplay('table')" ng-class="{'active': displayMode == 'table'}"><i class="fa fa-table"></i></button>
+			</div>
+			<div class="vis-type chart-view" ng-if="displayMode == 'chart'">
+				<sense-object ng-show="$index < totalDriversSelected" data-ng-repeat="driverObject in driverObjects.charts" id="{{ 'qs-driver-' + $index }}" object-id="driverObject" style="height: 250px;"></sense-object>
+
+				<div class="message" ng-if="!totalDriversSelected || totalDriversSelected === 0">
+					<i class='fa fa-line-chart'></i>
+					Please select up to {{metricCompareLimit}} metrics to compare
 				</div>
-				<div class="vis-type table-view" ng-if="displayMode == 'table'">
-					<sense-object id="qs-driver-table" object-id="driverObjects.table" style="height: 500px;"></sense-object>
-				</div>
+			</div>
+			<div class="vis-type table-view" ng-if="displayMode == 'table'">
+				<sense-object id="qs-driver-table" object-id="driverObjects.table" style="height: 500px;"></sense-object>
 			</div>
 		</div>
 	</div>
+</div>

@@ -1,5 +1,4 @@
 app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
-	$log.info('dropDown');
     return {
         restrict : 'E',
         scope: {
@@ -12,9 +11,14 @@ app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
         templateUrl: 'js/directives/dropdown/dropdown.html',
         controller: function($scope, chartService){
 			
-			$scope.selectInFieldDD = function(e, id){
+			$scope.selectInFieldDD = function(e, field){
 				e.stopPropagation();
-				chartService.selectValues($scope.dropdownfieldselect, id);
+				
+				$scope.$emit('SELECT_FIELD', {
+					'name': $scope.dropdownfieldselect,
+					'value': field.qText,
+					'isSelected': field.qState === 'O'
+				});
 			};
 			
 			app.qlikDoc.createList({

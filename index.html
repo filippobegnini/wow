@@ -24,7 +24,7 @@
     </head>
 
     <body role="document">
-        <div class="">  
+        <div data-ng-controller="mainController">  
             <div class="home-top-banner">
                 <span><img src="IMG/LOGO.svg" class="home-top-banner-img"></span>
                 <span class="home-top-banner-text">Supply Chain Heart Beat</span>
@@ -95,7 +95,7 @@
             </div>
             
             <div ng-view></div>
-        
+            <toast class="toast-notification" message="toast.message" title="toast.title" type="toast.type" options="toast.options"></toast>
         </div>
 
         <!-- Bootstrap JS -->

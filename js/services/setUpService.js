@@ -1,9 +1,6 @@
 //********** home Controllers
 app.service('setUpService', function($rootScope, $log, chartService) {
-	$log.info('setUpService');
-
-
-
+	
 	//Current Selection
 	app.qlikDoc.getObject( 'QV00', 'CurrentSelections' );
 	//End Current Selection
@@ -350,8 +347,6 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 	chartService.setStringValue('vDimPeriodName','FIN_MONTH');
 
 	$rootScope.selectInField = function(field, value) {
-		$log.info(field);
-		$log.info(value);
 		chartService.selectValues(field, value);	
 	};
 
@@ -388,10 +383,3 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 	};	
 });
 //********** End Summary Controllers
-
-app.constant('qlikRegister', {
-	drivers: {
-		charts: ['dpr', 'GYSgvYx', 'pPuCpt', 'pmpPjUP', 'pGcjJw'],
-		table: 'hvpJeRp'
-	}
-}); 

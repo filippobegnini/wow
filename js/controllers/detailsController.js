@@ -1,7 +1,5 @@
 //********** home Controllers
-app.controller('detailsController', function ($scope, $log, $rootScope, chartService, qlikRegister) {
-	$log.info('detailsController');
-
+app.controller('detailsController', function ($scope, $log, $rootScope, defaults, chartService, qlikRegister, ToastEnum) {
 	$(document).ready(function () {
 		//highlight this as the selected page
 		$("#P1").addClass("active");
@@ -11,6 +9,23 @@ app.controller('detailsController', function ($scope, $log, $rootScope, chartSer
 	$scope.$on('LastRepeaterElement', function(){
 		chartService.getObject($rootScope.arrayObjectsPageOne);	
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
+	});
+
+	$scope.$on('SELECT_FIELD', function(e, field){
+		if($scope.totalDriversSelected < defaults.metricCompareLimit || field.isSelected) {
+			chartService.selectValues(field.name, field.value);
+		} else {
+			var metricLimitToast = {
+				title: 'Warning!',
+				message: 'You have reached the maximum of metrics allowed. Please unselect a metric to compare against a new one.',
+				type: ToastEnum.WARNING,
+				options: {
+					closeDelay: 5000
+				}
+			}
+
+			$scope.$emit('NOTIFICATION', metricLimitToast);
+		}
 	});
 
 	$scope.Level3Category = [
@@ -25,6 +40,7 @@ app.controller('detailsController', function ($scope, $log, $rootScope, chartSer
 	];
 
 	$scope.driverObjects = qlikRegister.drivers;
+	$scope.metricCompareLimit = defaults.metricCompareLimit;
 
 	var selState = app.qlikDoc.selectionState();
     var onSelState = function () {
