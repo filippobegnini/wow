@@ -1,10 +1,11 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-md-2 driver-filters">
+			<div id="qs-driver-table" ng-hide="true"></div>
 			<div class="filter-count">
-				<b>Metrics selected:</b> {{totalDriversSelected || 0}} out of {{metricCompareLimit}}
+				<b>Metrics Selected:</b> {{totalDriversSelected || 0}} out of {{metricCompareLimit}}
 			</div>
-			<drop-down ng-repeat="metric in Level3Category" dropdownlist="metric.qsListField" dropdownid="metric.id" dropdownlabel="metric.Title" dropdownclass="metric.Class" dropdownfieldselect="metric.qsFileldSelect"></drop-down>
+			<drop-down ng-repeat="metric in Level3Category" label="metric.Title" color="metric.Color" field-name="L4MeasureFieldName" selected="totalDriversSelected"></drop-down>
 
 			<button type="button" class="btn dropdown-toggle btn-reset-filters" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-click="resetFilters()">Reset All</button>
 		</div>

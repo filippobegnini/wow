@@ -1,5 +1,5 @@
 //********** emitLastRepeaterElement
-app.service('chartService', function ($log) {
+app.service('chartService', function ($log, $q) {
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,6 +41,42 @@ app.service('chartService', function ($log) {
             });
         });
     };    
+
+    this.getTable = function(domID, objID, callback){
+        var self = this;
+
+        app.qlikDoc.getObject(domID, objID).then(function (model) {
+            var qMatrix;
+            
+            model.Validated.bind(function () {
+                self.getTableData(this).then(function (data) {
+                    qMatrix = data[0].qMatrix;
+                    callback(qMatrix);
+                })
+            });
+
+            self.getTableData(model).then(function (data) {
+                qMatrix = data[0].qMatrix;
+                callback(qMatrix);
+            })
+        });
+    }
+
+    this.getTableData = function (model) {
+        var deferred = $q.defer();
+        var defaultInitialDataFetch = { qHeight: 100, qWidth: 100 };
+
+        var dLabels = _.pluck(model.layout.qHyperCube.qDimensionInfo, 'qFallbackTitle');
+        var mLabels = _.pluck(model.layout.qHyperCube.qMeasureInfo, 'qFallbackTitle');
+
+        var qLabels =[].concat(dLabels, mLabels);
+
+        model.getHyperCubeData('/qHyperCubeDef', [defaultInitialDataFetch]).then(function (data) {
+            deferred.resolve(data);
+        });
+
+        return deferred.promise;
+    }
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

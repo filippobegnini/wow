@@ -1,5 +1,10 @@
 //********** home Controllers
 app.controller('detailsController', function ($scope, $log, $rootScope, defaults, chartService, qlikRegister, ToastEnum) {
+
+	var L4MeasureFieldName;
+
+	L4MeasureFieldName = qlikRegister.fields.L4MeasureFieldName;
+	
 	$(document).ready(function () {
 		//highlight this as the selected page
 		$("#P1").addClass("active");
@@ -12,6 +17,7 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 	});
 
 	$rootScope.togglePeriodShow = false;
+	$rootScope.summaryBreadCrub = false;
 
 	$scope.$on('SELECT_FIELD', function(e, field){
 		if($scope.totalDriversSelected < defaults.metricCompareLimit || field.isSelected) {
@@ -30,19 +36,73 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 		}
 	});
 
-	$scope.Level3Category = [
-		{ Title: "Timeliness", Class: "L3BoxGreen L3Box", id: "DW01", qsListField: '=if(LEVEL4_Timeliness=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Completeness", Class: "L3BoxGreen L3Box", id: "DW02", qsListField: '=if(LEVEL4_Completeness=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Process Quality", Class: "L3BoxGreen L3Box", id: "DW03", qsListField: '=if([LEVEL4_Process Quality]=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Productivity", Class: "L3BoxGreen L3Box", id: "DW04", qsListField: '=if(LEVEL4_Productivity=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Capacity", Class: "L3BoxGreen L3Box", id: "DW05", qsListField: '=if(LEVEL4_Capacity=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Cost", Class: "L3BoxGreen L3Box", id: "DW06", qsListField: '=if(LEVEL4_Cost=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "Volume", Class: "L3BoxGreen L3Box", id: "DW07", qsListField: '=if(LEVEL4_Volume=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' },
-		{ Title: "People", Class: "L3BoxGreen L3Box", id: "DW08", qsListField: '=if(LEVEL4_People=1,LEVEL4_MeasureName)', qsFileldSelect: 'LEVEL4_MeasureName' }
-	];
-
 	$scope.driverObjects = qlikRegister.drivers;
 	$scope.metricCompareLimit = defaults.metricCompareLimit;
+	$scope.L4MeasureFieldName = L4MeasureFieldName;
+
+	/*************************************************************
+	// START - Uncomment when Drivers table is ready in application
+	*************************************************************/
+	// chartService.getTable('qs-driver-table', 'tDfFG', function(res){
+	// 	$scope.Level3Category = $.map(res, function(item){
+	// 		return {
+	// 			Title: item[0].qText,
+	// 			Color: item[1].qText
+	// 		}
+	// 	});
+	// });
+	/*************************************************************
+	// END - Uncomment when Drivers table is ready in application
+	*************************************************************/
+
+	/*************************************************************
+	// START - Delete when Drivers table is ready in application
+	*************************************************************/
+	var mockResponseGetTableDrivers = [
+		[
+			{qText: "Timeliness", qNum: "NaN", qElemNumber: 33, qState: "O"},
+			{qText: "#94c548", qNum: "NaN", qElemNumber: 33, qState: "O"}
+		],
+		[
+			{qText: "Completeness", qNum: "NaN", qElemNumber: 34, qState: "O"},
+			{qText: "#94c548", qNum: "NaN", qElemNumber: 34, qState: "O"}
+		],
+		[
+			{qText: "Process Quality", qNum: "NaN", qElemNumber: 35, qState: "O"},
+			{qText: "#e43644", qNum: "NaN", qElemNumber: 35, qState: "O"}
+		],
+		[
+			{qText: "Productivity", qNum: "NaN", qElemNumber: 36, qState: "O"},
+			{qText: "#f59735", qNum: "NaN", qElemNumber: 36, qState: "O"}
+		],
+		[
+			{qText: "Capacity", qNum: "NaN", qElemNumber: 37, qState: "O"},
+			{qText: "#e43644", qNum: "NaN", qElemNumber: 37, qState: "O"}
+		],
+		[
+			{qText: "Cost", qNum: "NaN", qElemNumber: 38, qState: "O"},
+			{qText: "#94c548", qNum: "NaN", qElemNumber: 38, qState: "O"}
+		],
+		[
+			{qText: "Volume", qNum: "NaN", qElemNumber: 39, qState: "O"},
+			{qText: "#f59735", qNum: "NaN", qElemNumber: 39, qState: "O"}
+		],
+		[
+			{qText: "People", qNum: "NaN", qElemNumber: 40, qState: "O"},
+			{qText: "#94c548", qNum: "NaN", qElemNumber: 40, qState: "O"}
+		]
+	]
+
+	$scope.Level3Category = $.map(mockResponseGetTableDrivers, function(item){
+		return {
+			Title: item[0].qText,
+			Color: item[1].qText
+		}
+	});
+
+	/*************************************************************
+	// END - Delete when Drivers table is ready in application
+	*************************************************************/
 
 	var selState = app.qlikDoc.selectionState();
     var onSelState = function () {
@@ -51,20 +111,21 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
         selections = this.selections;
         if (selections.length > 0) {
             $.each(selections, function (idx, val) {
-                if(val.fieldName === 'LEVEL4_MeasureName'){
+                if(val.fieldName === L4MeasureFieldName){
                 	driversSelected = val.selectedCount;
                 }
             });
         }
 
-        $scope.totalDriversSelected = driversSelected;
+		$scope.totalDriversSelected = driversSelected;
+		app.qlik.resize();
     }
 
     selState.OnData.bind(onSelState);
 
 	$scope.resetFilters = function(){
 		$scope.setDisplay('chart');
-		chartService.clear('LEVEL4_MeasureName');
+		chartService.clear(L4MeasureFieldName);
 	}
 
 	$scope.setDisplay = function(type){
@@ -72,7 +133,5 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 	}
 
 	$scope.setDisplay('chart');
-
-	// $scope.resetFilters();
 });
 //********** End Summary Controllers

@@ -23,7 +23,7 @@ var configfile = {
 
 
 //Set to development or production
-var config = configfile.production;
+var config = configfile.development;
 
 //////////////////////////////////////////////////////
 

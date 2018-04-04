@@ -319,6 +319,10 @@ div.qvobject, div.qvplaceholder {
 	margin-top: 5px;
 }
 
+.KPIbox .KPIFirstRow {
+    cursor: pointer;
+}
+
 .L1-box{
 	background-color: #FFFFFF;
     margin-bottom: 10px;
@@ -428,6 +432,7 @@ div.qvobject, div.qvplaceholder {
     border-bottom-style: solid;
     border-color: #58585A;
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 .L3-kpi-table:hover{
@@ -656,12 +661,12 @@ h2 {
 	background-color: #F47920;
 }
 
-.L3BoxGreen{
+.L3Box{
 	background-color: #d31145;
 	/*background-color: #25861E;*/
 }
 
-.L3BoxGreen .dropdown-toggle {
+.L3Box .dropdown-toggle {
     background: none;
     border: none;
     width: 100%;
@@ -669,14 +674,12 @@ h2 {
     justify-content: space-between;
 }
 
-.L3BoxGreen .dropdown-toggle:hover,
-.L3BoxGreen .dropdown-toggle:active,
-.L3BoxGreen .dropdown-toggle:focus {
+.L3Box .dropdown-toggle:hover,
+.L3Box .dropdown-toggle:active,
+.L3Box .dropdown-toggle:focus {
     color: white;
     outline: none;
 }
-
-.L3BoxGreen .dropdown-toggle
 
 .legends{
 	margin-top: 50px; 
