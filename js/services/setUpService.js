@@ -185,7 +185,7 @@ app.service('setUpService', function($rootScope, $log, chartService, $location, 
 
 			{qsObjectID:'qsKPIhome120',		qsObject:'2f20626a-ccd6-4cb3-9018-24cc636fef52'},
 			{qsObjectID:'qsKPIhome121',		qsObject:'Nzk'},
-			{qsObjectID:'qsKPIhome123',		qsObject:'aWjjSX'},
+			{qsObjectID:'qsKPIhome122',		qsObject:'aWjjSX'},
 // ------------------------------Cost
 			// {qsObjectID:'qsKPIhome200',		qsObject:'5cb31553-bc0e-456b-8fff-698697b79581'},
 			// {qsObjectID:'qsKPIhome201',		qsObject:'7defe7d3-91fc-4aae-9f8f-b2ac98a0d24e'},
@@ -249,7 +249,7 @@ app.service('setUpService', function($rootScope, $log, chartService, $location, 
 
 			{qsObjectID:'qsKPIkra120',		qsObject:'2f20626a-ccd6-4cb3-9018-24cc636fef52'},
 			{qsObjectID:'qsKPIkra121',		qsObject:'Nzk'},
-			{qsObjectID:'qsKPIkra123',		qsObject:'aWjjSX'},
+			{qsObjectID:'qsKPIkra122',		qsObject:'aWjjSX'},
 // ------------------------------Cost
 			{qsObjectID:'qsKPIkra200',		qsObject:'5cb31553-bc0e-456b-8fff-698697b79581'},
 			{qsObjectID:'qsKPIkra201',		qsObject:'7defe7d3-91fc-4aae-9f8f-b2ac98a0d24e'},
