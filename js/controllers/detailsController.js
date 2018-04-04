@@ -11,6 +11,8 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
 	});
 
+	$rootScope.togglePeriodShow = false;
+
 	$scope.$on('SELECT_FIELD', function(e, field){
 		if($scope.totalDriversSelected < defaults.metricCompareLimit || field.isSelected) {
 			chartService.selectValues(field.name, field.value);
@@ -69,6 +71,8 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 		$scope.displayMode = type;
 	}
 
-	$scope.resetFilters();
+	$scope.setDisplay('chart');
+
+	// $scope.resetFilters();
 });
 //********** End Summary Controllers

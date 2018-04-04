@@ -1,5 +1,5 @@
 //********** home Controllers
-app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location) {		
+app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location, setUpService) {		
 	console.log('kra');
 
 	$scope.$on('LastRepeaterElement', function(){
@@ -7,16 +7,23 @@ app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location)
 		chartService.modelKPI($rootScope.arrayKPIsCommon);
 		chartService.getObject($rootScope.arrayObjectsKRA);
 		chartService.coloursKPI($rootScope.arrayColoursKPI);		
-	});		
+	});	
+	
+	console.log($rootScope.kraID);
 
+	if ($rootScope.kraID == 99) {
+		$location.path('home');
+	};	
+
+	chartService.clear('LEVEL4_MeasureName');
+	chartService.clear('MeasureID');
+
+	$rootScope.togglePeriodShow = true;
 	$rootScope.summaryBreadCrub = true;
 	$rootScope.breadcrumb = [
 		{show:true, value:"KRA[kraID].MetricLabel"},
 		{show:false, value:""},
 	];	
-
-	chartService.clear('MeasureID');
-
 
 $rootScope.KRA = [
 		{

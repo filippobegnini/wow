@@ -1,16 +1,30 @@
 //********** home Controllers
-app.controller( 'metricanalysisCtrl', function($scope, $rootScope, chartService, setUpService,$timeout) {		
+app.controller( 'metricanalysisCtrl', function($scope, $rootScope, chartService, setUpService, $timeout, $location) {		
 	console.log('metricanalysis');
 
 	chartService.modelKPI($rootScope.arrayKPIsMetricAnalysis);
 	chartService.modelKPI($rootScope.arrayKPIsCommon);
 	chartService.getObjectAndText($rootScope.arrayObjectMetricAnalysis[0].Type);
 
-	$rootScope.summaryBreadCrub = true;
-	$rootScope.breadcrumb = [
-		{show:true, value:$rootScope.kraID},
-		{show:true, value:"qsKPIma100_SubTitle"},
-	];	
+	$rootScope.togglePeriodShow = true;
+	$rootScope.summaryBreadCrub = true;	
+
+	console.log($rootScope.kraID);
+
+	if ($rootScope.kraID == 99) {
+		$location.path('home');
+	};		
+	if ($rootScope.kraID == 98) {
+		$rootScope.breadcrumb = [
+			{show:false, value:$rootScope.kraID},
+			{show:true, value:"qsKPIma100_SubTitle"},
+		];		
+	} else {
+		$rootScope.breadcrumb = [
+			{show:true, value:"KRA[kraID].MetricLabel"},			
+			{show:true, value:"qsKPIma100_SubTitle"},
+		];
+	};	
 
 	$scope.chartActive = 'active';
 	$scope.tableActive = '';

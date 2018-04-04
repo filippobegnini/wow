@@ -14,7 +14,11 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		$("#toggleButtons").show();
 	});
 
-	$rootScope.summaryBreadCrub = false;	
+	chartService.clear('LEVEL4_MeasureName');
+	chartService.clear('MeasureID');	
+
+	$rootScope.togglePeriodShow = true;
+	$rootScope.summaryBreadCrub = false;
 
 	$scope.$on('LastRepeaterElement', function () {
 		chartService.modelKPI($rootScope.arrayKPIs);
@@ -287,9 +291,16 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//This function show and hide the detail kpi section
+	$scope.showDetailLabel = 'Show Detail KPIs';
+
 	$rootScope.showDetailKPI = function() {
 		$scope.L3kpi = $scope.L3kpi ? false : true;
 		chartService.modelKPI($rootScope.arrayKPIsBis);
+		if ($scope.L3kpi == false) {
+			$scope.showDetailLabel = 'Show Detail KPIs';
+		} else {
+			$scope.showDetailLabel = 'Hide Detail KPIs';
+		};
 	};
 
 	$rootScope.goToKRA = function(id) {
@@ -297,7 +308,10 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		$location.path('kra');
 	};	
 
-	$rootScope.goToMetricAnalysis = function(id) {
+	$rootScope.goToMetricAnalysis = function(id, from) {
+		if(from == 'home') {
+			$rootScope.kraID = 98;
+		};
 		$rootScope.selectInField('MeasureID',id);
 		$location.path('metricanalysis');
 	}	

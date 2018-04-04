@@ -1,17 +1,5 @@
 //********** home Controllers
-app.service('setUpService', function($rootScope, $log, chartService) {
-	
-	//Current Selection
-	app.qlikDoc.getObject( 'QV00', 'CurrentSelections' );
-	//End Current Selection
-
-	// Filters
-	app.qlikDoc.getObject('qsFilter11','Fhufcmj');
-	//  chartService.getObject('qsFilter12','eSBVBX');
-	//  chartService.getObject('qsFilter13','eSBVBX');
-	//  chartService.getObject('qsFilter14','eSBVBX');
-
-	// End Filters	
+app.service('setUpService', function($rootScope, $log, chartService, $location, $timeout) {
 
 	var prev = 'Brisbane RDC';
 	 app.qlikDoc.createList({
@@ -44,6 +32,8 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 			 app.qlikDoc.field('DC_Name').clear();
 		};
 	});	
+
+	$rootScope.kraID = 99;
 
 
 	/////////////////////
@@ -379,7 +369,40 @@ app.service('setUpService', function($rootScope, $log, chartService) {
 		};			
 
 		chartService.setStringValue('vDimPeriodName',PeriodName);
-
 	};	
+
+	$rootScope.goToDrivers = function() {
+		app.qlikDoc.getObject('ruNhWC').then(function(model) { 
+  				model.getHyperCubeData('/qHyperCubeDef', [{ 
+    					qTop: 0,  
+    					qLeft: 0,  
+    					qWidth: 10,  
+    					qHeight: 100 
+  				}]).then(function(data){
+  						$rootScope.driverSelector = data[0].qMatrix.map(function(d) {
+							return {
+								"MeasureName":d[0].qText,
+								"MeasureID":d[1].qText,
+								"Driver1ID":d[2].qText,
+								"Driver2ID":d[3].qText,
+								"Driver3ID":d[4].qText,
+							}; 
+						});
+						app.qlikDoc.field('LEVEL4_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver1ID)], true, true);
+						app.qlikDoc.field('LEVEL4_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver2ID)], true, true);
+						app.qlikDoc.field('LEVEL4_MeasureID').selectValues([Number($rootScope.driverSelector[0].Driver3ID)], true, true);
+						// app.qlikDoc.field('LEVEL4_MeasureName').selectValues('[' + $rootScope.driverSelector[0].MeasureName + ']', true, true);												
+						$timeout(function() { 
+							// $scope.displayErrorMsg = false;
+							app.qlikDoc.field('LEVEL4_MeasureName').selectPossible();
+							app.qlikDoc.field('LEVEL4_MeasureID').clear();
+							app.qlikDoc.field('LEVEL4_MeasureName').selectValues([String($rootScope.driverSelector[0].MeasureName)], true, true);	
+							console.log(String($rootScope.driverSelector[0].MeasureName));						
+						}, 2000);
+  				});
+		});
+		$location.path('drivers');
+	};
+
 });
 //********** End Summary Controllers
