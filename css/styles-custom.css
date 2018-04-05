@@ -491,15 +491,22 @@ h2 {
     margin-bottom: 0px;
 }
 
-.dropdown-menu>li>a {
-     font-weight: normal;
-     font-size: 13px;
-     cursor: pointer;
-     padding: 10px;
+.dropdown-menu .dropdown-menu-item {
+    background-color: #f6f4f3;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 10px;
+    color: #333;
 }
 
-.dropdown-menu.active .O {
+.dropdown-menu .dropdown-menu-item.selected {
     background-color: #9e0d34;
+}
+
+.dropdown-menu .dropdown-menu-item.selected a,
+.dropdown-menu .dropdown-menu-item.selected a:hover {
+    background-color: #9e0d34 !important;
     color: white;
 }
 
@@ -507,16 +514,6 @@ h2 {
 
 .modal-lg {
     width: 90%;
-}
-
-.S {
-	background-color: #f6f4f3;
-	font-weight: bold;
-}
-
-.O {
-	background-color: #f6f4f3;
-	font-weight: bold;
 }
 
 .scrollable-menu {
@@ -781,6 +778,16 @@ h2 {
     width: 100%;
     z-index: 50;
     text-align: center;
+}
+
+.toast-notification .alert {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toast-notification .alert i {
+    font-size: 20px;
 }
 
 /*-------------------*/

@@ -1,11 +1,12 @@
 <div class="L3Box" ng-style="{'background-color': color}">
     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div>{{label}}</div> <div><span>({{totalSelected}})</span> <span class="caret"></span></div>
+        <div>{{label}}</div> <div><span ng-if="listItems">({{totalSelected}})</span> <span class="caret"></span></div>
     </button>
     
-    <ul class="dropdown-menu dropdown-content" ng-class="{'active': totalSelected > 0}">
-        <li ng-repeat="listItem in ABC">
-            <a class="{{listItem[0].qState}}" ng-click="selectInFieldDD($event, listItem[0])">{{listItem[0].qText}}</a>
+    <ul class="dropdown-menu dropdown-content">
+        <li class="dropdown-menu-item" ng-repeat="listItem in listItems" ng-class="{'selected': listItem[0].qState === 'S'}">
+            <a ng-click="selectInFieldDD($event, listItem[0])">{{listItem[0].qText}}</a>
         </li>
+        <li class="dropdown-menu-item" ng-if="!listItems">Loading...</li>
     </ul>
 </div>

@@ -17,35 +17,38 @@ app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
 			
 			$scope.selectInFieldDD = function(e, field){
 				e.stopPropagation();
-				
-				$scope.$emit('SELECT_FIELD', {
-					'name': fieldName,
-					'value': field.qText,
-					'isSelected': field.qState === 'O'
-				});
+
+				if(field){
+					$scope.$emit('SELECT_FIELD', {
+						'name': fieldName,
+						'value': field.qText,
+						'isSelected': field.qState === 'O'
+					});
+				}
 			};
 
-			var qFieldDefs = '=if([LEVEL4_'+label+']=1,'+fieldName+')';
-
-			app.qlikDoc.createList({
-				"qDef": {
-					"qFieldDefs": [qFieldDefs]
-				},
-				"qInitialDataFetch": [{
-					qTop : 0,
-					qLeft : 0,
-					qHeight : 500,
-					qWidth : 5
-					}]
-				}, function(reply) {
-					$scope.ABC = reply.qListObject.qDataPages[0].qMatrix;
-
-					var count = _.countBy(_.flatten($scope.ABC), 'qState');
-
-					console.log('list',label, $scope.ABC, 'count',count, 'selected',$scope.selected);
+			app.qlikDoc.createCube({
+				'qInitialDataFetch': [{
+				  'qHeight': 50,
+				  'qWidth': 2
+				}],
+				'qDimensions': [{
+					'qDef': {
+					  'qFieldDefs': [fieldName]
+					},
+					'qNullSuppression': true,
+				  }],
+				'qMeasures': [{
+					'qDef': {
+					  'qDef': 'count( {1< [LEVEL4_'+label+'] = {"1"} >} '+fieldName+')'
+					}
+				  }]
+			  }, function(reply){
+				  	$scope.listItems = reply.qHyperCube.qDataPages[0].qMatrix;
 					
-					$scope.totalSelected = Object.keys(count).length > 1 ? count.O : 0;
-			});
+					  var count = _.countBy(_.flatten($scope.listItems), 'qState');
+					$scope.totalSelected = count.S || 0;
+			  });
         }
     };
 }]);
