@@ -47,6 +47,7 @@ require.config({
 		'dropdownDirective': scriptsUrl + 'js/directives/dropdown/dropdown.directive',
 		'filterDirective': scriptsUrl + 'js/directives/filter/filter.directive',
 		'senseObject': scriptsUrl + 'js/directives/sense-object/sense-object.directive',
+		'kpiMegamenuComponent': scriptsUrl + 'js/components/kpi-megamenu/kpi-megamenu.component',
 		'toastComponent': scriptsUrl + 'js/components/toast/toast.component',
 		'constants': scriptsUrl + 'js/constants',
 		'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',
@@ -109,6 +110,7 @@ define([
 		'dropdownDirective',
 		'filterDirective',
 		'senseObject',
+		'kpiMegamenuComponent',
 		'toastComponent',
 		'emitLastRepeaterElement'
 	], function (qlik) {

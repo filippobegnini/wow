@@ -1,0 +1,8 @@
+<div class="megamenu-container">
+    <div class="megamenu-item" ng-repeat="kraItem in $ctrl.kraList">
+        <h2 ng-click="$ctrl.goToKRA($index)">{{kraItem.name}}</h2>
+        <ul>
+            <li ng-click="$ctrl.goToMetricAnalysis(kpiItem.id, 'home')" ng-repeat="kpiItem in kraItem.kpiList">{{kpiItem.name}}</li>
+        </ul>
+    </div>
+</div>

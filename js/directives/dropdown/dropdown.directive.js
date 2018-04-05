@@ -44,11 +44,11 @@ app.directive('dropDown', ["$rootScope", "$log", function($rootScope, $log) {
 					}
 				  }]
 			  }, function(reply){
-				  	$scope.listItems = reply.qHyperCube.qDataPages[0].qMatrix;
+				  $scope.listItems = reply.qHyperCube.qDataPages[0].qMatrix;
 					
-					  var count = _.countBy(_.flatten($scope.listItems), 'qState');
+					var count = _.countBy(_.flatten($scope.listItems), 'qState');
 					$scope.totalSelected = count.S || 0;
 			  });
-        }
+			}
     };
 }]);

@@ -23,80 +23,83 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css" />  -->   
     </head>
 
-    <body role="document">
-        <div data-ng-controller="mainController">  
-            <div class="home-top-banner">
-                <span><img src="IMG/LOGO.svg" class="home-top-banner-img"></span>
-                <span class="home-top-banner-text">Supply Chain Heart Beat</span>
+    <body role="document" data-ng-controller="mainController">
+            <div class="main-header">
+                <div class="home-top-banner">
+                    <span><img src="IMG/LOGO.svg" class="home-top-banner-img"></span>
+                    <span class="home-top-banner-text">Supply Chain Heart Beat</span>
+                </div>
+    
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!--  <a class="navbar-brand" href="#">Executive Dashboard</a> -->
+                        </div>
+    
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li id="" class="menuPage kpi-megamenu-btn" ng-click="toggleKpiMegamenu()"><a href="javascript:void(0);"><div><span class="kpi-menu-title">KPI Menu</span><i class="fa fa-bars"></i></div></a></li>
+                                <li id="P0" class="menuPage"><a href="#"><div>Summary</div></a></li>
+                                <li id="P1" class="menuPage"><a href="#/drivers">Drivers</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="menuPage" style="padding-top: 15px; padding-right: 20px;"><span id="qsKPIhomeDate_0"></span></li>
+                                <li class="menuPage" style="padding-top: 12px; padding-right: 10px;">
+                                    <button type="button" class="btn btn-default btn-xs cta-button" ng-click="ResetPerios()">Reset Period</button>
+                                    <div style="height: 0px; width: 0px;" id="qsKPIhomeDate"></div>
+                                </li>
+                            </ul>
+                        </div>
+                </nav> 
             </div>
 
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!--  <a class="navbar-brand" href="#">Executive Dashboard</a> -->
+            <div class="main-content">
+                <div class="row" ng-show="summaryBreadCrub">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ol class="breadcrumb" style="padding: 0px;">
+                            <li><a href="#">Summary</a></li>
+                            <li ng-show="breadcrumb[0].show"><a href="#/kra" id="{{KRA[kraID].MetricLabel}}"></a></li>
+                            <li ng-show="breadcrumb[1].show" id="{{breadcrumb[1].value}}"></li>
+                        </ol>                    
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li id="" class="menuPage"><a href=""><div>=</div></a></li>
-                            <li id="P0" class="menuPage"><a href="#"><div>Summary</div></a></li>
-                            <li id="P1" class="menuPage"><a href="#/drivers">Drivers</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="menuPage" style="padding-top: 15px; padding-right: 20px;"><span id="qsKPIhomeDate_0"></span></li>
-                            <li class="menuPage" style="padding-top: 12px; padding-right: 10px;">
-                                <button type="button" class="btn btn-default btn-xs cta-button" ng-click="ResetPerios()">Reset Period</button>
-                                <div style="height: 0px; width: 0px;" id="qsKPIhomeDate"></div>
-                            </li>
-                        </ul>
+                </div>            
+    
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <filter-select field-name="DC_Name" label="Distribution Centre"></filter-select>
+                        
+                        <div style="height: 0px; width: 0px;" id="qsKPIhomeDClabel"></div>
                     </div>
-            </nav> 
-
-            <div class="row" ng-show="summaryBreadCrub">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <ol class="breadcrumb" style="padding: 0px;">
-                        <li><a href="#">Summary</a></li>
-                        <li ng-show="breadcrumb[0].show"><a href="#/kra" id="{{KRA[kraID].MetricLabel}}"></a></li>
-                        <li ng-show="breadcrumb[1].show" id="{{breadcrumb[1].value}}"></li>
-                    </ol>                    
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-show="togglePeriodShow">
+                        <span>   
+                            <button type="button" class="btn btn-default" disabled="disabled" style="float: right;">Comments</button>                        
+                            <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 20px;">
+                                <button type="button" class="btn btn-default {{CWactive}} cta-button" ng-click="TogglePeriod('CW')">
+                                    <div class="hidden-md hidden-sm hidden-xs">Current Week</div><div class="hidden-lg">WK</div>
+                                </button>
+                                <button type="button" class="btn btn-default {{CMactive}} cta-button" ng-click="TogglePeriod('CM')">
+                                    <div class="hidden-md hidden-sm hidden-xs">Current Month</div><div class="hidden-lg">MTH</div>
+                                </button>
+                                <button type="button" class="btn btn-default {{FCYactive}} cta-button" ng-click="TogglePeriod('FCY')">
+                                    <div class="hidden-md hidden-sm hidden-xs">Year to Date</div><div class="hidden-lg">YTD</div>
+                                </button>                       
+                            </div>                                 
+                        </span>                      
+                    </div>
                 </div>
-            </div>            
-
-            <div class="row" style="margin-bottom: 20px;">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <filter-select field-name="DC_Name" label="Distribution Centre"></filter-select>
-                    
-                    <div style="height: 0px; width: 0px;" id="qsKPIhomeDClabel"></div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-show="togglePeriodShow">
-                    <span>   
-                        <button type="button" class="btn btn-default" disabled="disabled" style="float: right;">Comments</button>                        
-                        <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 20px;">
-                            <button type="button" class="btn btn-default {{CWactive}} cta-button" ng-click="TogglePeriod('CW')">
-                                <div class="hidden-md hidden-sm hidden-xs">Current Week</div><div class="hidden-lg">WK</div>
-                            </button>
-                            <button type="button" class="btn btn-default {{CMactive}} cta-button" ng-click="TogglePeriod('CM')">
-                                <div class="hidden-md hidden-sm hidden-xs">Current Month</div><div class="hidden-lg">MTH</div>
-                            </button>
-                            <button type="button" class="btn btn-default {{FCYactive}} cta-button" ng-click="TogglePeriod('FCY')">
-                                <div class="hidden-md hidden-sm hidden-xs">Year to Date</div><div class="hidden-lg">YTD</div>
-                            </button>                       
-                        </div>                                 
-                    </span>                      
-                </div>
+                
+                <div ng-view></div>
+                <toast class="toast-notification" message="toast.message" title="toast.title" type="toast.type" options="toast.options"></toast>
+                <kpi-megamenu ng-show="megamenuVisibility" class="kpi-megamenu"></kpi-megamenu>
             </div>
-            
-            <div ng-view></div>
-            <toast class="toast-notification" message="toast.message" title="toast.title" type="toast.type" options="toast.options"></toast>
-        </div>
 
         <!-- Bootstrap JS -->
         <!-- Latest compiled and minified JavaScript -->

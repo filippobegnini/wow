@@ -14,6 +14,16 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 		$("#toggleButtons").show();
 	});
 
+	$rootScope.$on('KRA_SELECTED', function(e, id){
+		$rootScope.megamenuVisibility = false;
+		$scope.goToKRA(id);
+	});
+
+	$rootScope.$on('KPI_SELECTED', function(e, data){
+		$rootScope.megamenuVisibility = false;
+		$scope.goToMetricAnalysis(data.id, data.from);
+	});
+
 	chartService.clear('LEVEL4_MeasureName');
 	chartService.clear('MeasureID');	
 
