@@ -1,15 +1,23 @@
 //********** home Controllers
 app.controller( 'metricanalysisCtrl', function($scope, $rootScope, chartService, setUpService, $timeout, $location) {		
+	$rootScope.controllerName = 'metricanalysisCtrl';
 	console.log('metricanalysis');
 
 	chartService.modelKPI($rootScope.arrayKPIsMetricAnalysis);
 	chartService.modelKPI($rootScope.arrayKPIsCommon);
 	chartService.getObjectAndText($rootScope.arrayObjectMetricAnalysis[0].Type);
+	chartService.coloursKPI($rootScope.arrayColoursKPI);
 
 	$rootScope.togglePeriodShow = true;
 	$rootScope.summaryBreadCrub = true;	
-
-	console.log($rootScope.kraID);
+	chartService.clear('LEVEL4_MeasureName');	
+	chartService.clear('LEVEL4_MeasureID');	
+	
+	chartService.getDataField('MeasureID', function(res){
+		if (res.stateCounts.qSelected == 0 && $rootScope.controllerName == 'metricanalysisCtrl') {
+			$location.path('kra');		
+		};
+	});
 
 	if ($rootScope.kraID == 99) {
 		$location.path('home');

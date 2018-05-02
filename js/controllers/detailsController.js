@@ -1,5 +1,6 @@
 //********** home Controllers
-app.controller('detailsController', function ($scope, $log, $rootScope, defaults, chartService, qlikRegister, ToastEnum) {
+app.controller('detailsController', function ($scope, $log, $rootScope, defaults, chartService, qlikRegister, ToastEnum, setUpService) {
+	$rootScope.controllerName = 'detailsController';
 
 	var L4MeasureFieldName;
 
@@ -12,12 +13,36 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 	});
 
 	$scope.$on('LastRepeaterElement', function(){
-		chartService.getObject($rootScope.arrayObjectsPageOne);	
-		chartService.modelKPI($rootScope.arrayKPIsCommon);
+		// chartService.getObject($rootScope.arrayObjectsPageOne);	
+		
 	});
+	chartService.modelKPI($rootScope.arrayKPIsCommon);
+	
 
 	$rootScope.togglePeriodShow = false;
-	$rootScope.summaryBreadCrub = false;
+	$rootScope.summaryBreadCrub = true;
+
+	if ($rootScope.kraID == 99) {
+		$rootScope.summaryBreadCrub = false;		
+	};
+
+	chartService.getDataField('MeasureID', function(res){
+		if (res.stateCounts.qSelected == 0 && $rootScope.controllerName == 'detailsController') {
+			$rootScope.summaryBreadCrub = false;		
+		};
+	});
+
+	if ($rootScope.kraID == 98) {
+		$rootScope.breadcrumb = [
+			{show:false, value:"KRA[kraID].MetricLabel"},			
+			{show:true, value:"qsKPIma100_SubTitle"},
+		];		
+	} else {
+		$rootScope.breadcrumb = [
+			{show:true, value:"KRA[kraID].MetricLabel"},			
+			{show:true, value:"qsKPIma100_SubTitle"},
+		];
+	};	
 
 	$scope.$on('SELECT_FIELD', function(e, field){
 		if($scope.totalDriversSelected < defaults.metricCompareLimit || field.isSelected) {
@@ -40,69 +65,14 @@ app.controller('detailsController', function ($scope, $log, $rootScope, defaults
 	$scope.metricCompareLimit = defaults.metricCompareLimit;
 	$scope.L4MeasureFieldName = L4MeasureFieldName;
 
-	/*************************************************************
-	// START - Uncomment when Drivers table is ready in application
-	*************************************************************/
-	// chartService.getTable('qs-driver-table', 'tDfFG', function(res){
-	// 	$scope.Level3Category = $.map(res, function(item){
-	// 		return {
-	// 			Title: item[0].qText,
-	// 			Color: item[1].qText
-	// 		}
-	// 	});
-	// });
-	/*************************************************************
-	// END - Uncomment when Drivers table is ready in application
-	*************************************************************/
-
-	/*************************************************************
-	// START - Delete when Drivers table is ready in application
-	*************************************************************/
-	var mockResponseGetTableDrivers = [
-		[
-			{qText: "Timeliness", qNum: "NaN", qElemNumber: 33, qState: "O"},
-			{qText: "#94c548", qNum: "NaN", qElemNumber: 33, qState: "O"}
-		],
-		[
-			{qText: "Completeness", qNum: "NaN", qElemNumber: 34, qState: "O"},
-			{qText: "#94c548", qNum: "NaN", qElemNumber: 34, qState: "O"}
-		],
-		[
-			{qText: "Process Quality", qNum: "NaN", qElemNumber: 35, qState: "O"},
-			{qText: "#e43644", qNum: "NaN", qElemNumber: 35, qState: "O"}
-		],
-		[
-			{qText: "Productivity", qNum: "NaN", qElemNumber: 36, qState: "O"},
-			{qText: "#f59735", qNum: "NaN", qElemNumber: 36, qState: "O"}
-		],
-		[
-			{qText: "Capacity", qNum: "NaN", qElemNumber: 37, qState: "O"},
-			{qText: "#e43644", qNum: "NaN", qElemNumber: 37, qState: "O"}
-		],
-		[
-			{qText: "Cost", qNum: "NaN", qElemNumber: 38, qState: "O"},
-			{qText: "#94c548", qNum: "NaN", qElemNumber: 38, qState: "O"}
-		],
-		[
-			{qText: "Volume", qNum: "NaN", qElemNumber: 39, qState: "O"},
-			{qText: "#f59735", qNum: "NaN", qElemNumber: 39, qState: "O"}
-		],
-		[
-			{qText: "People", qNum: "NaN", qElemNumber: 40, qState: "O"},
-			{qText: "#94c548", qNum: "NaN", qElemNumber: 40, qState: "O"}
-		]
-	]
-
-	$scope.Level3Category = $.map(mockResponseGetTableDrivers, function(item){
-		return {
-			Title: item[0].qText,
-			Color: item[1].qText
-		}
+	chartService.getTable('qs-driver-table-colour', 'DpukYjD', function(res){
+		$scope.Level3Category = $.map(res, function(item){
+			return {
+				Title: item[0].qText,
+				Color: item[1].qText
+			}
+		});
 	});
-
-	/*************************************************************
-	// END - Delete when Drivers table is ready in application
-	*************************************************************/
 
 	var selState = app.qlikDoc.selectionState();
     var onSelState = function () {

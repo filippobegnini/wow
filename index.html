@@ -67,7 +67,7 @@
                         <ol class="breadcrumb" style="padding: 0px;">
                             <li><a href="#">Summary</a></li>
                             <li ng-show="breadcrumb[0].show"><a href="#/kra" id="{{KRA[kraID].MetricLabel}}"></a></li>
-                            <li ng-show="breadcrumb[1].show" id="{{breadcrumb[1].value}}"></li>
+                            <li ng-show="breadcrumb[1].show"><a href="#/metricanalysis" id="{{breadcrumb[1].value}}"></a></li>
                         </ol>                    
                     </div>
                 </div>            
@@ -83,10 +83,10 @@
                             <button type="button" class="btn btn-default" disabled="disabled" style="float: right;">Comments</button>                        
                             <div class="btn-group" role="group" aria-label="..." style="float: right; margin-right: 20px;">
                                 <button type="button" class="btn btn-default {{CWactive}} cta-button" ng-click="TogglePeriod('CW')">
-                                    <div class="hidden-md hidden-sm hidden-xs">Current Week</div><div class="hidden-lg">WK</div>
+                                    <div class="hidden-md hidden-sm hidden-xs">Week</div><div class="hidden-lg">WK</div>
                                 </button>
                                 <button type="button" class="btn btn-default {{CMactive}} cta-button" ng-click="TogglePeriod('CM')">
-                                    <div class="hidden-md hidden-sm hidden-xs">Current Month</div><div class="hidden-lg">MTH</div>
+                                    <div class="hidden-md hidden-sm hidden-xs">Month</div><div class="hidden-lg">MTH</div>
                                 </button>
                                 <button type="button" class="btn btn-default {{FCYactive}} cta-button" ng-click="TogglePeriod('FCY')">
                                     <div class="hidden-md hidden-sm hidden-xs">Year to Date</div><div class="hidden-lg">YTD</div>

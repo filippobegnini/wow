@@ -3,24 +3,25 @@
 var configfile = {
 	"development": {
 		"qlikConfig": {
-			"host": "ausyd-extahq.qliktech.com",
-			"prefix": "/",
-			"port": 443,
-			"isSecure": window.location.protocol === "https:"
-		},
-		"appId": "2b4c7023-f94e-4f4d-953b-7afce48ac737"
-	},
-	"production": {
-		"qlikConfig": {
 			"host": "ausyd-feg1.qliktech.com",
 			"prefix": "/",
 			"port": 443,
 			"isSecure": window.location.protocol === "https:"
 		},
-		"appId": "96d820e2-d953-45c2-8f41-84a73ff4584f"
+		"appId": "36c21da4-4f7d-4f56-8a6d-67d5630fbeb1"
+	},
+	"production": {
+		"qlikConfig": {
+			"host": "ncdwlqvasp0002.woolworths.com.au",
+			"prefix": "/",
+			"port": 80,
+			"isSecure": window.location.protocol === "https:"
+		},
+		"appId": "f31c9cb6-c21a-4978-81ea-e568e0b28668"
 	}
 }
-
+//
+//f31c9cb6-c21a-4978-81ea-e568e0b28668
 
 //Set to development or production
 var config = configfile.development;
@@ -47,7 +48,6 @@ require.config({
 		'dropdownDirective': scriptsUrl + 'js/directives/dropdown/dropdown.directive',
 		'filterDirective': scriptsUrl + 'js/directives/filter/filter.directive',
 		'senseObject': scriptsUrl + 'js/directives/sense-object/sense-object.directive',
-		'kpiMegamenuComponent': scriptsUrl + 'js/components/kpi-megamenu/kpi-megamenu.component',
 		'toastComponent': scriptsUrl + 'js/components/toast/toast.component',
 		'constants': scriptsUrl + 'js/constants',
 		'emitLastRepeaterElement': scriptsUrl + 'js/directives/emitLastRepeaterElement',
@@ -110,7 +110,6 @@ define([
 		'dropdownDirective',
 		'filterDirective',
 		'senseObject',
-		'kpiMegamenuComponent',
 		'toastComponent',
 		'emitLastRepeaterElement'
 	], function (qlik) {

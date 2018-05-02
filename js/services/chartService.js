@@ -79,6 +79,14 @@ app.service('chartService', function ($log, $q) {
     }
 
 
+    this.getDataField = function (fieldName, callback) {
+        var callbackObj;
+        callbackObj = app.qlikDoc.field("MeasureID").getData(); 
+        callbackObj.OnData.bind( function(){
+            callback(callbackObj);
+        });       
+    }; 
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //This service generates one ID for each of the KPIs. The ID will have the same prefix as per the input array.
     //The first measure will have sufix 0, the second will have 1.
@@ -253,7 +261,6 @@ app.service('chartService', function ($log, $q) {
             });
         });
     };
-
 
 });
 //********** End emitLastRepeaterElement

@@ -4,7 +4,10 @@
 			<table>
 				<td style="width: 10%"><img src="{{KRA[kraID].IMG}}" style="height: 50; width: 85px; opacity: 0.7; padding-left: 20px;"></td>
 				<td class="krs-metric-title" id="{{KRA[kraID].MetricTitle}}"></td>
-				<td style="background-color: #d31145; width: 30%; color: #FFFFFF; text-align: right; padding-right: 20px; font-size: 30px;" id="{{KRA[kraID].Metric}}"></td>
+				<td>
+					<div style="color: #FFFFFF; text-align: center;" class="kra-header">Actuals</div>
+					<div style="background-color: #d31145; color: #FFFFFF; text-align: center; font-size: 30px; padding-top: 15px; padding-bottom: 35px;" id="{{KRA[kraID].Metric}}"></div>
+				</td>
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -14,9 +17,9 @@
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="{{KRA[kraID].MetricTarget}}" style="height: 70px; font-size: 20px;"></td>
+					<td id="{{KRA[kraID].MetricTarget}}" style="height: 70px; font-size: 30px;"></td>
 					<td>
-						<div class="target-change" style="background-color: #d31145; float: right;" id="{{KRA[kraID].MetricTargetChange}}"></div>
+						<div class="target-change {{KRA[kraID].MetricClass}}" style="float: right;" id="{{KRA[kraID].MetricTargetChange}}"></div>
 					</td>					
 				</tr>				
 			</table>
@@ -28,25 +31,34 @@
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="{{KRA[kraID].MetricPCP}}" style="height: 70px; font-size: 20px;"></td>
-					<td>
+					<td id="{{KRA[kraID].MetricPCP}}" style="height: 70px; font-size: 30px;"></td>
+					<td id="{{KRA[kraID].MetricPCPChange}}" style="height: 70px; font-size: 30px;"></td>
+					<!-- <td>
 						<div class="target-change" style="background-color: #d31145; float: right;" id="{{KRA[kraID].MetricPCPChange}}"></div>
-					</td>					
+					</td>					 -->
 				</tr>				
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-			<div id="{{KRA[kraID].Trend}}" style="height: 75px; margin-top: 15px;"></div>	
+			<table style="margin-top: 5px;">
+				<tr class="kra-header" style="text-align: center;">
+					<td>Weekly Trend</td>					
+				</tr>
+				<tr>
+					<td><div id="{{KRA[kraID].Trend}}" style="height: 75px;"></div></td>				
+				</tr>				
+			</table>			
 		</div>	
 		<div id="{{KRA[kraID].Obj}}" style="height: 0px;"></div>
 		<div id="{{KRA[kraID].ObjTarget}}" style="height: 0px;"></div>
 		<div id="{{KRA[kraID].ObjPCP}}" style="height: 0px;"></div>					
+		<div id="{{KRA[kraID].MetricClassObj}}" style="height: 0px;"></div>					
 	</div>		
 
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 kra-box">
 			<div class="L3-kpi-box-header">
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>				
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Actuals</div>				
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 					<table>
 						<tr class="kra-header">
@@ -63,19 +75,25 @@
 						</tr>
 					</table>					
 				</div>
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>					
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<table>
+						<tr class="kra-header" style="text-align: center;">
+							<td>Weekly Trend</td>
+						</tr>
+					</table>
+				</div>					
 			</div>
 			<div ng-repeat="y in KRA[kraID].SubMetric" emit-last-repeater-element class="kra-box-body" ng-click="goToMetricAnalysis(y.SubMetricClick, 'kra')">
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 						<table>
 							<td id="{{y.SubMetricTitle}}" style="height: 85px; text-align: left;"></td>
-							<td id="{{y.SubMetric}}" style="height: 85px; padding-right: 5px;"></td>														
+							<td id="{{y.SubMetric}}" class="kri-box-body-number" style="padding-right: 5px;"></td>														
 						</table>
 					</div>				
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 						<table>
-							<td id="{{y.SubMetricTarget}}" style="height: 85px; width: 50%;"></td>
+							<td id="{{y.SubMetricTarget}}" class="kri-box-body-number" style="width: 50%;"></td>
 							<td>
 								<div class="target-change {{y.SubMetricTargetClass}}" style="float: right;" id="{{y.SubMetricTargetChange}}"></div>
 							</td>							
@@ -83,7 +101,7 @@
 					</div>
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding-right: 20px;">
 						<table>
-							<td id="{{y.SubMetricPCP}}" style="height: 85px; width: 50%;"></td>
+							<td id="{{y.SubMetricPCP}}" class="kri-box-body-number" style="width: 50%;"></td>
 							<td id="{{y.SubMetricPCPChange}}" style="height: 85px;"></td>							
 						</table>					
 					</div>

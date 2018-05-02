@@ -1,5 +1,6 @@
 //********** home Controllers
 app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location, setUpService) {		
+	$rootScope.controllerName = 'kraCtrl';
 	console.log('kra');
 
 	$scope.$on('LastRepeaterElement', function(){
@@ -16,6 +17,7 @@ app.controller( 'kraCtrl', function($scope, $rootScope, chartService, $location,
 	};	
 
 	chartService.clear('LEVEL4_MeasureName');
+	chartService.clear('LEVEL4_MeasureID');		
 	chartService.clear('MeasureID');
 
 	$rootScope.togglePeriodShow = true;
@@ -30,8 +32,8 @@ $rootScope.KRA = [
 			MetricTitle:"qsKPIkra100_SubTitle",
 			MetricLabel:"qsKPIkra100_Title",
 			Metric:"qsKPIkra100_0",
-			MetricClass:"qsKPIkra100Class_1",	
-			MetricClassObj:"qsKPIkra100Class",		
+			MetricClass:"qsKPIhome100Class_1",	
+			MetricClassObj:"qsKPIhome300Class",		
 			Obj:"qsKPIkra100",
 
 			MetricTarget:"qsKPIkra101_0",
@@ -201,8 +203,8 @@ $rootScope.KRA = [
 			MetricTitle:"qsKPIkra300_SubTitle",
 			MetricLabel:"qsKPIkra300_Title",
 			Metric:"qsKPIkra300_0",
-			MetricClass:"qsKPIkra300Class_1",	
-			MetricClassObj:"qsKPIkra300Class",		
+			MetricClass:"qsKPIhome300Class_1",	
+			MetricClassObj:"qsKPIhome300Class",		
 			Obj:"qsKPIkra300",
 
 			MetricTarget:"qsKPIkra301_0",

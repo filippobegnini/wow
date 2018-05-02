@@ -1,6 +1,7 @@
 //********** home Controllers
 app.controller('homeController', function ($scope, $log, $rootScope, chartService, setUpService, $location) {
 	$log.info('home');
+	$rootScope.controllerName = 'homeController';
 
 	$(document).ready(function () {
 		//highlight this as the selected page
@@ -25,7 +26,9 @@ app.controller('homeController', function ($scope, $log, $rootScope, chartServic
 	});
 
 	chartService.clear('LEVEL4_MeasureName');
-	chartService.clear('MeasureID');	
+	chartService.clear('LEVEL4_MeasureID');	
+	$rootScope.kraID = 99;
+	chartService.clear('MeasureID');
 
 	$rootScope.togglePeriodShow = true;
 	$rootScope.summaryBreadCrub = false;

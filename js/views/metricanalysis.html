@@ -4,7 +4,10 @@
 			<table>
 				<td style="width: 10%"><img src="{{KRA[kraID].IMG}}" style="height: 50; width: 85px; opacity: 0.7; padding-left: 20px;"></td>
 				<td class="krs-metric-title" id="qsKPIma100_Title"></td>
-				<td style="background-color: #d31145; width: 30%; color: #FFFFFF; text-align: right; padding-right: 20px; font-size: 30px;" id="qsKPIma100_0"></td>
+				<td>
+					<div style="color: #FFFFFF; text-align: center;" class="kra-header">Actuals</div>
+					<div style="background-color: #d31145; color: #FFFFFF; text-align: center; font-size: 30px; padding-top: 15px; padding-bottom: 35px;" id="qsKPIma100_0"></div>
+				</td>				
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -14,9 +17,9 @@
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="qsKPIma101_0" style="height: 70px;"></td>
+					<td id="qsKPIma101_0" style="height: 70px; font-size: 30px;"></td>
 					<td>
-						<div class="target-change" style="background-color: #d31145; float: right;" id="qsKPIma101_1"></div>
+						<div class="target-change qsKPIma100Class_1" style="float: right;" id="qsKPIma101_1"></div>
 					</td>					
 				</tr>				
 			</table>
@@ -28,20 +31,29 @@
 					<td>Change</td>					
 				</tr>
 				<tr style="text-align: right;">
-					<td id="qsKPIma103_0" style="height: 70px;"></td>
-					<td>
+					<td id="qsKPIma103_0" style="height: 70px; font-size: 30px;"></td>
+					<td id="qsKPIma103_1" style="height: 70px; font-size: 30px;"></td>
+					<!-- <td>
 						<div class="target-change" style="background-color: #d31145; float: right;" id="qsKPIma103_1"></div>
-					</td>					
+					</td>					 -->
 				</tr>				
 			</table>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-			<div id="qsObjectSpark" style="height: 75px; margin-top: 15px;"></div>	
+			<table style="margin-top: 5px;">
+				<tr class="kra-header" style="text-align: center;">
+					<td>Weekly Trend</td>					
+				</tr>
+				<tr>
+					<td><div id="qsObjectSpark" style="height: 75px;"></div></td>				
+				</tr>				
+			</table>			
 		</div>	
 		<div id="qsKPIma100" style="height: 0px;"></div>
 		<div id="qsKPIma101" style="height: 0px;"></div>
-		<div id="qsKPIma103" style="height: 0px;"></div>					
-	</div>		
+		<div id="qsKPIma103" style="height: 0px;"></div>
+		<div id="qsKPIma100Class" style="height: 0px;"></div>					
+	</div>	
 
 	<div class="row" style="margin-left: -5px; margin-right: -5px;">
 		<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ma-box"> -->
@@ -116,7 +128,7 @@
 				</div>
 			</div>			
 
-			<div class="row" style="">
+			<div class="row">
              	<button type="button" class="btn btn-default cta-button" ng-click="goToDrivers()" style="float: right; margin-top: 10px; margin-right: 5px;">
              		See Drivers <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
              	</button>

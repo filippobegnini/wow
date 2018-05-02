@@ -1,6 +1,8 @@
 //********** home Controllers
 app.service('setUpService', function($rootScope, $log, chartService, $location, $timeout) {
 
+	app.qlikDoc.clearAll();
+
 	var prev = 'Brisbane RDC';
 	 app.qlikDoc.createList({
 		"qDef": {
@@ -100,13 +102,13 @@ app.service('setUpService', function($rootScope, $log, chartService, $location, 
 		];	
 		
 // 
-		$rootScope.arrayObjectsPageOne = [
-			{qsObjectID:'qsObjectDetailsChartPerc',			qsObject:'UPEdhp'},
-			{qsObjectID:'qsObjectDetailsChartNum',			qsObject:'YLdaGXX'},
-			{qsObjectID:'qsObjectDetailsChartBigNum',		qsObject:'LFwBur'},
+		// $rootScope.arrayObjectsPageOne = [
+		// 	{qsObjectID:'qsObjectDetailsChartPerc',			qsObject:'UPEdhp'},
+		// 	{qsObjectID:'qsObjectDetailsChartNum',			qsObject:'YLdaGXX'},
+		// 	{qsObjectID:'qsObjectDetailsChartBigNum',		qsObject:'LFwBur'},
 
-			{qsObjectID:'qsObjectDetailsTable',				qsObject:'PCqdpK'},	
-		];
+		// 	{qsObjectID:'qsObjectDetailsTable',				qsObject:'PCqdpK'},	
+		// ];
 	/////////////////////
 	//---Object
 	/////////////////////
@@ -324,6 +326,8 @@ app.service('setUpService', function($rootScope, $log, chartService, $location, 
 		{qsObjectID:'qsKPIhome330Class',		qsObject:'XdpkHm'},
 // ------------------------------Inventory Turns
 		{qsObjectID:'qsKPIhome000Class',		qsObject:'c3dc74b7-55f4-4fec-be25-86062baaf12e'},			
+		{qsObjectID:'qsKPIhome010Class',		qsObject:'kTzjpj'},
+		{qsObjectID:'qsKPIma100Class',			qsObject:'jVJPJ'},
 	];
 	
 	$rootScope.ResetPerios = function(){
